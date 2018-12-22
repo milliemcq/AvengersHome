@@ -10,6 +10,18 @@ p {
   color:white;
 }
 
+h1 {
+    font-family: "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 26px;
+    color: white;
+    opacity: 1;
+}
+
 body {
 
   background: #f5f7f8;
@@ -86,4 +98,12 @@ body {
   .nope {
     display: none;
   }
+}
+
+.toplogo {
+    height: 1%;
+    max-height: 50px;
+    max-width: 150px;
+    width: 1%;
+    margin-top: 5px;
 }
