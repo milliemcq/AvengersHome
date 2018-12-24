@@ -12,5 +12,18 @@
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11"
-  }
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milliemcq/AvengersHome.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/milliemcq/AvengersHome/issues"
+  },
+  "homepage": "https://github.com/milliemcq/AvengersHome#readme",
+  "description": ""
 }
