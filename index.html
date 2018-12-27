@@ -12,6 +12,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="public/stylesheets/style.css">
 <script src="http://github.hubspot.com/odometer/odometer.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 <body background-color="#000000">
@@ -20,26 +21,16 @@
             odometer.innerHTML = 1546989;
         }, 1000);
 
-        const xhr = new XMLHttpRequest();
 
-        xhr.onload = function() {
-            if(this.status === 200) {
-                try {
-                    const resObj = JSON.parse(this.responseText);
-                    console.log(resObj)
-                }
-                catch (e) {
-                    console.warn('Error in the JSON, could not parse');
-                }
+        $(document).ready(function () {
+            $.getJSON('data.json', function(data) {
+                console.log(data.toString())
+                $("#title").text(data.users[1].forename);
 
-            } else {
-                console.warn('Did not receive 200 OK from response!');
-            }
+            });
 
-        };
+        });
 
-        xhr.open('get', 'data.json');
-        xhr.send();
 
     </script>
     <style type="text/css">
@@ -120,18 +111,19 @@
 
     <div align="center" >
         <h1 style="color: white">Welcome to the Avengers</h1>
+        <h2 id='title'></h2>
         <p>Found on this site are pages about the Avengers, there is also a private members area for <br/> members of S.H.I.E.L.D to co-ordinate current missions.</p>
     </div>
     <div align="center">
         <h3 style="color: white;">Lives Saved: </h3>
         <span class="odometer">1234567</span>
+
+
+
     </div>
     <section class="grid-1">
 
         <div class="box1">1</div>
-
-p
-
         <div class="item-3">3</div>
         <div class="item-4">4</div>
         <div class="item-5">5</div>
@@ -139,8 +131,8 @@ p
         <div class="item-7">7</div>
         <div class="item-8">8</div>
         <div class="item-9">9</div>
-    </section>
 
+    </section>
 
 
 
