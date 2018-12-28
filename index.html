@@ -22,13 +22,27 @@
         }, 1000);
 
 
-        $(document).ready(function () {
+        /*$(document).ready(function () {
             $.getJSON('data.json', function(data) {
                 console.log(data.toString())
                 $("#title").text(data.users[1].forename);
 
             });
 
+        });*/
+
+        $(document).ready(function () {
+            $.getJSON('data.json',
+                function(data) {
+                    var tr;
+                    for (var i = 0; i < data.users.length; i++) {
+                        tr = $('<tr/>');
+                        tr.append("<td>" + data.users[i].forename + "</td>");
+                        tr.append("<td>" + data.users[i].surname + "</td>");
+                        tr.append("<td>" + data.users[i].alterEgo + "</td>");
+                        $('table').append(tr);
+                    }
+                });
         });
 
 
@@ -111,7 +125,16 @@
 
     <div align="center" >
         <h1 style="color: white">Welcome to the Avengers</h1>
-        <h2 id='title'></h2>
+
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Surname</th>
+                <th>Alter Ego</th>
+            </tr>
+        </table>
+
+
         <p>Found on this site are pages about the Avengers, there is also a private members area for <br/> members of S.H.I.E.L.D to co-ordinate current missions.</p>
     </div>
     <div align="center">
