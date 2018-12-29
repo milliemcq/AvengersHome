@@ -28,11 +28,13 @@ var users = {
             "alterEgo": "The Composer"
         }
     ]
-}
+};
 
-app.get('/', function(req, resp){
+app.use(express.static('public'));
+
+app.get('/missions', function(req, resp){
     console.log(req)
-    resp.send('Hello world' + req.query.title)
+    resp.send('Hello world' + users)
 })
 
 app.listen(8090)
