@@ -1,3 +1,4 @@
+"use strict"
 var express = require('express')
 var app = express()
 
@@ -33,8 +34,7 @@ var users = {
 app.use(express.static('public'));
 
 app.get('/missions', function(req, resp){
-    console.log(req)
-    resp.send('Hello world' + users)
+    resp.send('Hello world' + users.users[0].forename)
 })
 
 app.listen(8090)
