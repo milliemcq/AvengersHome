@@ -85,10 +85,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link, current" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about_tab">About</a>
+                    <a class="nav-link" href="missions.html">Missions</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#Login">Login</a>
@@ -96,6 +96,20 @@
             </ul>
         </div>
     </nav>
+        <script>
+            $('nav a').on('click', function(e) {
+                e.preventDefault();
+                var url = this.href;
+                $('nav a.current').removeClass('current');
+                $(this).addClass('current');
+
+                $('#container').remove();
+                $('#content').load(url + ' #container').hide().fadeIn('slow');
+
+
+            });
+
+        </script>
     </div>
 
 
@@ -135,7 +149,8 @@
     </div>
 
     <!-- Welcome -->
-
+<section id="content">
+    <div id="container">
     <div align="center" >
         <h1 style="color: white">Welcome to the Avengers</h1>
 
@@ -157,7 +172,7 @@
         <div class="item-1">
             <div align="center">
                 <h3 style="color: white;">Lives Saved: </h3>
-                <div class="odometer">1234567</div>
+                <div>1234567</div>
             </div>
         </div>
         <div class="item-2">
@@ -165,10 +180,18 @@
                 <h3 style="color: white;">Greatest Threat:</h3>
                 <h1 id="title"></h1>
             </div>
-
-
         </div>
-        <div class="item-3">3</div>
+        <div class="item-2">
+            <button id="missions_btn" type="button" class="btn btn-primary">View Current Missions</button>
+            <script>
+
+                $("#missions_btn").click( function()
+                    {
+                        alert('button clicked');
+                    }
+                );
+            </script>
+        </div>
 
     </section>
     <!-- WORKING FORM
@@ -189,7 +212,8 @@
         $('#songform').on('submit', formhandler);
     </script>
     -->
-
+    </div>
+</section>
     <!--THIS IS THE LOGIN MODAL-->
     <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
