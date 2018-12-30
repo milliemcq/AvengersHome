@@ -11,7 +11,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="stylesheets/style.css">
-<script src="http://github.hubspot.com/odometer/odometer.js"></script>
+<link rel="stylesheet" href="odometer-theme-car.css" />
+<script src="odometer.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
@@ -30,7 +31,7 @@
 
         });*/
 
-        $(document).ready(function () {
+        /*$(document).ready(function () {
             $.getJSON('data.json',
                 function(data) {
                     var tr;
@@ -41,6 +42,23 @@
                         tr.append("<td>" + data.users[i].alterEgo + "</td>");
                         $('table').append(tr);
                     }
+                });
+        });*/
+
+        $(document).ready(function () {
+            $.getJSON('data.json',
+                function(data) {
+                    var biggestRisk = data.events[0].atRiskCount;
+                    var biggestRiskEvent = data.events[0].threat
+                    for (var i = 0; i < data.events.length; i++) {
+                        if(data.events[i].atRiskCount > biggestRisk){
+                            biggestRisk = data.events[i].atRiskCount;
+                            biggestRiskEvent = data.events[i].threat;
+                        }
+                    }
+                    console.log(data.toString())
+                    $("#title").text(biggestRiskEvent);
+
                 });
         });
 
@@ -133,27 +151,27 @@
         <p>Found on this site are pages about the Avengers, there is also a private members area for <br/> members of S.H.I.E.L.D to co-ordinate current missions.</p>
     </div>
 
-    <div align="center">
-        <h3 style="color: white;">Lives Saved: </h3>
-        <span class="odometer">1234567</span>
 
-
-
-    </div>
     <section class="grid-1">
 
-        <div class="box1">
+        <div class="item-1">
+            <div align="center">
+                <h3 style="color: white;">Lives Saved: </h3>
+                <div class="odometer">1234567</div>
+            </div>
+        </div>
+        <div class="item-2">
+            <div align="center">
+                <h3 style="color: white;">Greatest Threat:</h3>
+                <h1 id="title"></h1>
+            </div>
+
 
         </div>
         <div class="item-3">3</div>
-        <div class="item-4">4</div>
-        <div class="item-5">5</div>
-        <div class="item-6">6</div>
-        <div class="item-7">7</div>
-        <div class="item-8">8</div>
-        <div class="item-9">9</div>
 
     </section>
+    <!-- WORKING FORM
     <form id="songform" action="http://127.0.0.1:8090">
         <div>Song Name: <input name="title"></div>
     </form>
@@ -170,6 +188,7 @@
 
         $('#songform').on('submit', formhandler);
     </script>
+    -->
 
     <!--THIS IS THE LOGIN MODAL-->
     <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
