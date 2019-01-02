@@ -12,12 +12,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="stylesheets/style.css">
 <link rel="stylesheet" href="odometer-theme-car.css" />
-<script src="odometer.js"></script>
+<!--<script src="odometer.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
     <script>
-        setTimeout(function(){
+        /*setTimeout(function(){
             odometer.innerHTML = 1546989;
         }, 1000);
 
@@ -75,6 +75,8 @@
 
 
 
+
+
     </script>
 
     <style type="text/css">
@@ -115,6 +117,21 @@
 
                 $('#container').remove();
                 $('#content').load(url + ' #container').hide().fadeIn('slow');
+
+
+                $.getJSON('data.json',
+                    function(data) {
+                        var tr;
+                        for (var i = 0; i < data.events.length; i++) {
+                            tr = $('<tr/>');
+                            tr.append("<td>" + data.events[i].threat + "</td>");
+                            tr.append("<td>" + data.events[i].location + "</td>");
+                            tr.append("<td>" + data.events[i].atRiskCount + "</td>");
+                            tr.append("<td>" + data.events[i].heroesAssigned + "</td>");
+                            $('table').append(tr);
+                        }
+                    });
+
 
             });
 

@@ -10,6 +10,8 @@ p {
   color:white;
 }
 
+table thead th { color: white; font-size:10pt; }
+
 h1 {
     font-family: "Helvetica Neue",
     Helvetica, Arial, sans-serif;
