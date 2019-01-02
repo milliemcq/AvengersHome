@@ -62,6 +62,16 @@
                 });
         });
 
+        $(document).ready(function () {
+            $.getJSON('data.json',
+                function(data) {
+
+                    $("#numberOfMissions").text(data.events.length);
+
+                });
+        });
+
+
 
 
 
