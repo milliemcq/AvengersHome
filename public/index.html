@@ -124,10 +124,10 @@
                         var tr;
                         for (var i = 0; i < data.events.length; i++) {
                             tr = $('<tr/>');
-                            tr.append("<td>" + data.events[i].threat + "</td>");
-                            tr.append("<td>" + data.events[i].location + "</td>");
-                            tr.append("<td>" + data.events[i].atRiskCount + "</td>");
-                            tr.append("<td>" + data.events[i].heroesAssigned + "</td>");
+                            tr.append("<td style='color: white'>" + data.events[i].threat + "</td>");
+                            tr.append("<td style='color: white'>" + data.events[i].location + "</td>");
+                            tr.append("<td style='color: white'>" + data.events[i].atRiskCount + "</td>");
+                            tr.append("<td style='color: white'>" + data.events[i].heroesAssigned + "</td>");
                             $('table').append(tr);
                         }
                     });
