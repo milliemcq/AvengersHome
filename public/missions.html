@@ -13,13 +13,43 @@
 <script src="http://github.hubspot.com/odometer/odometer.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script>
+    $(document).ready(function () {
+            $.getJSON('data.json',
+                function(data) {
+                    var tr;
+                    for (var i = 0; i < data.events.length; i++) {
+                        tr = $('<tr/>');
+                        tr.append("<td>" + data.events[i].threat + "</td>");
+                        tr.append("<td>" + data.events[i].location + "</td>");
+                        tr.append("<td>" + data.events[i].atRiskCount + "</td>");
+                        tr.append("<td>" + data.events[i].heroesAssigned + "</td>");
+                        $('table').append(tr);
+                    }
+                });
+    });
+
+
+
+
+</script>
+
 <body>
 <section id="content">
     <div id="container">
         <div align="center" >
             </br>
             <h1 style="color: white">Mission Control</h1>
-            <p></p>
+            <p>This is where you can see updated mission information as organised by Nick Fury</p>
+            </br>
+            <table>
+               <tr>
+                   <th>Threat Name</th>
+                   <th>Threat Location</th>
+                   <th>Number at Risk</th>
+                   <th>Heroes Assigned</th>
+               </tr>
+            </table>
         </div>
 </section>
 </body>
