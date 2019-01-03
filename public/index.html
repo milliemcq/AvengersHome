@@ -116,10 +116,10 @@
                 var url = this.href;
 
                 $('#container').remove();
-                $('#content').load(url + ' #container').hide().fadeIn('slow');
 
 
-                $.getJSON('data.json',
+
+                /*$.getJSON('data.json',
                     function(data) {
                         var tr;
                         for (var i = 0; i < data.events.length; i++) {
@@ -130,7 +130,10 @@
                             tr.append("<td style='color: white'>" + data.events[i].heroesAssigned + "</td>");
                             $('table').append(tr);
                         }
-                    });
+                    });*/
+                $('#content').load(url + ' #container').hide();
+
+                $('#content').fadeIn('slow');
 
 
             });
