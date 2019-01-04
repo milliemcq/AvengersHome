@@ -102,8 +102,12 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="missions.html">Missions</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#Login">Login</a>
                 </li>
@@ -117,20 +121,6 @@
 
                 $('#container').remove();
 
-
-
-                /*$.getJSON('data.json',
-                    function(data) {
-                        var tr;
-                        for (var i = 0; i < data.events.length; i++) {
-                            tr = $('<tr/>');
-                            tr.append("<td style='color: white'>" + data.events[i].threat + "</td>");
-                            tr.append("<td style='color: white'>" + data.events[i].location + "</td>");
-                            tr.append("<td style='color: white'>" + data.events[i].atRiskCount + "</td>");
-                            tr.append("<td style='color: white'>" + data.events[i].heroesAssigned + "</td>");
-                            $('table').append(tr);
-                        }
-                    });*/
                 $('#content').load(url + ' #container').hide();
 
                 $('#content').fadeIn('slow');
@@ -233,6 +223,50 @@
         $('#songform').on('submit', formhandler);
     </script>
     -->
+        <section id="missions">
+            <div id="missionsContainer">
+                <script>
+                    $(document).ready(function () {
+                        $.getJSON('data.json',
+                            function(data) {
+                                var tr;
+                                for (var i = 0; i < data.events.length; i++) {
+                                    tr = $('<tr/>');
+                                    tr.append("<td style='color: white'>" + data.events[i].threat + "</td>");
+                                    tr.append("<td style='color: white'>" + data.events[i].location + "</td>");
+                                    tr.append("<td style='color: white'>" + data.events[i].atRiskCount + "</td>");
+                                    tr.append("<td style='color: white'>" + data.events[i].heroesAssigned + "</td>");
+                                    $('table').append(tr);
+                                }
+                            });
+                    });
+                </script>
+                <div align="center" >
+                    </br>
+                    <h1 style="color: white">Mission Control</h1>
+                    <p>This is where you can see updated mission information as organised by Nick Fury</p>
+                    </br>
+                    <div>
+                        <table class="table" style="width: 85%">
+                            <tr class="table-light" >
+                                <th>Threat Name</th>
+                                <th>Threat Location</th>
+                                <th>Number at Risk</th>
+                                <th>Heroes Assigned</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
     </div>
 </section>
     <!--THIS IS THE LOGIN MODAL-->
@@ -264,42 +298,6 @@
         </div>
     </div>
 
-    <section id="missions">
-        <div id="missionsContainer">
-            <script>
-                $(document).ready(function () {
-                    $.getJSON('data.json',
-                        function(data) {
-                            var tr;
-                            for (var i = 0; i < data.events.length; i++) {
-                                tr = $('<tr/>');
-                                tr.append("<td style='color: white'>" + data.events[i].threat + "</td>");
-                                tr.append("<td style='color: white'>" + data.events[i].location + "</td>");
-                                tr.append("<td style='color: white'>" + data.events[i].atRiskCount + "</td>");
-                                tr.append("<td style='color: white'>" + data.events[i].heroesAssigned + "</td>");
-                                $('table').append(tr);
-                            }
-                        });
-                });
-            </script>
-         <div align="center" >
-            </br>
-            <h1 style="color: white">Mission Control</h1>
-            <p>This is where you can see updated mission information as organised by Nick Fury</p>
-            </br>
-            <div>
-                <table class="table" style="width: 85%">
-                    <tr class="table-light" >
-                        <th>Threat Name</th>
-                        <th>Threat Location</th>
-                        <th>Number at Risk</th>
-                        <th>Heroes Assigned</th>
-                    </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
 

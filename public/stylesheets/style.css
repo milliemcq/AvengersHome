@@ -109,3 +109,7 @@ body {
     width: 1%;
     margin-top: 5px;
 }
+
+rounded_img {
+    border-radius: 50%;
+}
