@@ -110,6 +110,15 @@ body {
     margin-top: 5px;
 }
 
-rounded_img {
+.roundedimg {
     border-radius: 50%;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    float: left;
+    flex: 50%;
 }
