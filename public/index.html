@@ -191,7 +191,7 @@
     </div>
 
 
-    <section class="grid-1">
+    <section class="grid-1" style="height: 300px">
 
         <div class="item-1">
             <div align="center">
@@ -264,13 +264,43 @@
         </div>
     </div>
 
-    <!--THIS IS THE ABOUT TAB-->
-    <div id="about_tab", style="display: none;">
-        <!--TODO Create the about tab -->
-        <p>
-            Testing Testing 123
-        </p>
-    </div>
+    <section id="missions">
+        <div id="missionsContainer">
+            <script>
+                $(document).ready(function () {
+                    $.getJSON('data.json',
+                        function(data) {
+                            var tr;
+                            for (var i = 0; i < data.events.length; i++) {
+                                tr = $('<tr/>');
+                                tr.append("<td style='color: white'>" + data.events[i].threat + "</td>");
+                                tr.append("<td style='color: white'>" + data.events[i].location + "</td>");
+                                tr.append("<td style='color: white'>" + data.events[i].atRiskCount + "</td>");
+                                tr.append("<td style='color: white'>" + data.events[i].heroesAssigned + "</td>");
+                                $('table').append(tr);
+                            }
+                        });
+                });
+            </script>
+         <div align="center" >
+            </br>
+            <h1 style="color: white">Mission Control</h1>
+            <p>This is where you can see updated mission information as organised by Nick Fury</p>
+            </br>
+            <div>
+                <table class="table" style="width: 85%">
+                    <tr class="table-light" >
+                        <th>Threat Name</th>
+                        <th>Threat Location</th>
+                        <th>Number at Risk</th>
+                        <th>Heroes Assigned</th>
+                    </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
 
 

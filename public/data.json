@@ -50,5 +50,12 @@
       "atRiskCount": 10000000000000000,
       "heroesAssigned" : [ "theking", "capA123", "doctorwhocomposer"]
     }
+  ],
+
+  "logins": [
+    {
+      "username": "fury",
+      "password": "password"
+    }
   ]
 }
