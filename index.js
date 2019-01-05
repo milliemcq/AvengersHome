@@ -72,16 +72,16 @@ app.get('/missions', function(req, resp){
 });
 
 app.post('/missions', function(req, res) {
-    debugger;
 
-    var missionName = req.body.threat
-    console.log(missionName);
     currentMissionId++;
 
     missions.push({
         "id": currentMissionId,
-        "threat": missionName
+        "threat": req.body.threat,
+        "location": req.body.location,
+        "atRiskCount": req.body.atRiskCount
     });
+    console.log(missions);
 
     res.send('Successfully created mission!');
 });

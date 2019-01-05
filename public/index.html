@@ -224,38 +224,25 @@
     -->
         <section id="missions">
             <div id="missionsContainer">
-                <!--
-                <script>
-                    $(document).ready(function () {
-                        $.getJSON('data.json',
-                            function(data) {
-                                var tr;
-                                for (var i = 0; i < data.events.length; i++) {
-                                    tr = $('<tr/>');
-                                    tr.append("<td style='color: white'>" + data.events[i].threat + "</td>");
-                                    tr.append("<td style='color: white'>" + data.events[i].location + "</td>");
-                                    tr.append("<td style='color: white'>" + data.events[i].atRiskCount + "</td>");
-                                    tr.append("<td style='color: white'>" + data.events[i].heroesAssigned + "</td>");
-                                    $('table').append(tr);
-                                }
-                            });
-                    });
-                </script>
-                -->
+
 
                 </br>
                 <h1 style="color: white">Mission Control</h1>
                 <p>This is where you can see updated mission information as organised by Nick Fury</p>
                 </br>
-
                 <button id="get-button">READ/GET Missions</button>
+                <!--
                 <form id="create-form">
                     <input type="text" id="create-input">
                     <button>Create/PORT</button>
                 </form>
+                -->
                 <br>
                 <br>
 
+                <button>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#mission-form">Add Mission</a>
+                </button>
 
                 <div align="center" >
 
@@ -276,46 +263,63 @@
                 </div>
 
 
-
-
-
-
-
             </div>
         </section>
 
 
-
-
-
-
-
-
-
     </div>
 </section>
-    <!--THIS IS THE LOGIN MODAL-->
-    <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!--THIS IS THE MISSION FORM MODAL-->
+    <div class="modal fade" id="mission-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="height: 50px">
-                    <h4 class="modal-title" id="releaseModalLabel">Login</h4>
+                    <h4 class="modal-title">Add a Mission</h4>
                     <span>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </span>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <label for="usernameLogin">Username</label>
-                        <input type="text" class="form-control" id="usernameLogin" size="15" maxlength="30" placeholder="username"/>
+                    <form id="create-form">
+                        <label for="threat-name-input">Threat Name</label>
+                        <input type="text" class="form-control" id="threat-name-input" size="15" maxlength="30" placeholder="Name"/>
                         <br/>
-                        <label for="passwordLogin">Password</label>
-                        <input type="password" class="form-control" id="passwordLogin" size="15" maxlength="30" placeholder="password"/>
+                        <label for="threat-location-input">Threat Location</label>
+                        <input type="text" class="form-control" id="threat-location-input" size="15" maxlength="30" placeholder="Location"/>
+                        <br/>
+                        <label for="num-at-risk-input">Number at Risk</label>
+                        <input type="text" class="form-control" id="num-at-risk-input" size="15" maxlength="30" placeholder="At Risk"/>
+                        <br/>
+
+                        <button class="btn btn-dark" style="float: right">Add Mission</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--THIS IS THE LOGIN MODAL -->
+    <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="height: 50px">
+                    <h4 class="modal-title">Login</h4>
+                    <span>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </span>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="username-input">Username</label>
+                        <input type="text" class="form-control" id="username-input" size="15" maxlength="30" placeholder="username"/>
+                        <br/>
+                        <label for="password-input">Password</label>
+                        <input type="password" class="form-control" id="password-input" size="15" maxlength="30" placeholder="password"/>
                         <br/>
                         <span>
-                            Don't have an account?
-                            <label><a href="/Account/Signup">Signup</a></label>
-                        </span>
+                                Don't have an account?
+                                <label><a href="/Account/Signup">Signup</a></label>
+                            </span>
                         <button type="button" class="btn btn-dark" style="float: right">Login</button>
                     </form>
                 </div>

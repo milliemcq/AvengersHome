@@ -33,9 +33,16 @@ $(function () {
     $('#create-form').on('submit', function(event) {
         event.preventDefault();
 
-        var createInput = $('#create-input');
-        var data = {"threat": createInput.val()};
-        console.log(createInput.val());
+        var threatNameInput = $('#threat-name-input').val();
+        var threatLocationInput = $('#threat-location-input').val();
+        var atRiskCountInput = $('#num-at-risk-input').val();
+
+        var data = {
+            "threat": threatNameInput,
+            "location": threatLocationInput,
+            "atRiskCount": atRiskCountInput
+        };
+
         $.ajax({
             url: '/missions',
             method: 'POST',
@@ -44,7 +51,7 @@ $(function () {
             success: function(response) {
                 console.log("hellO!");
                 console.log(response);
-                createInput.val('');
+
                 $('#get-button').click();
             }
         });
