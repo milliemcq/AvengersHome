@@ -31,6 +31,31 @@ var users = {
     ]
 };
 
+var missions = [
+        {
+            "threat": "Brexit",
+            "location": "London",
+            "atRiskCount": 70000000,
+            "heroesAssigned" : [ "capA123", "doctorwhocomposer"]
+
+        },
+
+        {
+            "threat": "Trump",
+            "location": "America",
+            "atRiskCount": 300000000,
+            "heroesAssigned" : [ "capA123", "bowsnarrows"]
+
+        },
+
+        {
+            "threat": "Thanos",
+            "location": "Whole Universe",
+            "atRiskCount": 10000000000000000,
+            "heroesAssigned" : [ "theking", "capA123", "doctorwhocomposer"]
+        }
+    ]
+
 app.use(express.static('public'));
 
 app.get('/missions', function(req, resp){
