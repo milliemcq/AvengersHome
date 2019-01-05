@@ -38,7 +38,7 @@ $(function () {
             url: '/missions',
             method: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({ threat: createInput.val() }),
+            data: JSON.stringify(createInput.val()),
             success: function(response) {
                 console.log(response);
                 createInput.val('');

@@ -70,12 +70,12 @@ app.get('/missions', function(req, resp){
 app.post('/missions', function(req, res) {
     console.log("HEREHEREHEREHhHHHHHHHUHOFUHWSEOIF JOEIJFOEIJFOIEWFH:OIEJF:OIEWJF:OEIWJF:OIEWJ:FOIEWJ:OF")
     console.log(req);
-    var missionName = req.body.threat;
+    var missionName = req.body;
     currentMissionId++;
 
-    products.push({
+    missions.push({
         id: currentMissionId,
-        name: missionName
+        threat: missionName
     });
 
     res.send('Successfully created mission!');
