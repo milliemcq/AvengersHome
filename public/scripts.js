@@ -33,12 +33,12 @@ $(function () {
         event.preventDefault();
 
         var createInput = $('#create-input');
-
+        console.log(createInput.val());
         $.ajax({
-            url: '/products',
+            url: '/missions',
             method: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({ name: createInput.val() }),
+            data: JSON.stringify({ threat: createInput.val() }),
             success: function(response) {
                 console.log(response);
                 createInput.val('');

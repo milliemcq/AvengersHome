@@ -68,7 +68,9 @@ app.get('/missions', function(req, resp){
 });
 
 app.post('/missions', function(req, res) {
-    var missionName = req.body.name;
+    console.log("HEREHEREHEREHhHHHHHHHUHOFUHWSEOIF JOEIJFOEIJFOIEWFH:OIEJF:OIEWJF:OEIWJF:OIEWJ:FOIEWJ:OF")
+    console.log(req);
+    var missionName = req.body.threat;
     currentMissionId++;
 
     products.push({
