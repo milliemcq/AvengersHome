@@ -11,9 +11,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="stylesheets/style.css">
-<link rel="stylesheet" href="odometer-theme-car.css" />
-<!--<script src="odometer.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="scripts.js"></script>
 
 
     <script>
@@ -225,6 +224,7 @@
     -->
         <section id="missions">
             <div id="missionsContainer">
+                <!--
                 <script>
                     $(document).ready(function () {
                         $.getJSON('data.json',
@@ -241,31 +241,50 @@
                             });
                     });
                 </script>
+                -->
+
+                </br>
+                <h1 style="color: white">Mission Control</h1>
+                <p>This is where you can see updated mission information as organised by Nick Fury</p>
+                </br>
+
+                <button id="get-button">READ/GET Missions</button>
+                <form id="create-form">
+                    <input type="text" id="create-input">
+                    <button>Create/PORT</button>
+                </form>
+                <br>
+                <br>
+
+
                 <div align="center" >
-                    </br>
-                    <h1 style="color: white">Mission Control</h1>
-                    <p>This is where you can see updated mission information as organised by Nick Fury</p>
-                    </br>
+
                     <div>
                         <table class="table" style="width: 85%">
-                            <tr class="table-light" >
-                                <th>Threat Name</th>
-                                <th>Threat Location</th>
-                                <th>Number at Risk</th>
-                                <th>Heroes Assigned</th>
-                            </tr>
+                            <thead>
+                                <tr class="table-light" >
+                                    <th style="color: black">Threat Name</th>
+                                    <th style="color: black">Threat Location</th>
+                                    <th style="color: black">Number at Risk</th>
+                                    <th style="color: black">Heroes Assigned</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
                         </table>
+
                     </div>
                 </div>
+
+
+
+
+
+
+
             </div>
         </section>
 
-        <form id="create-form">
-            <input type="text" id="create-input">
-            <button>Create/PORT</button>
-        </form>
-        <br>
-        <br>
+
 
 
 

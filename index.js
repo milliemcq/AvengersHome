@@ -64,7 +64,7 @@ var currentMissionId = 3;
 app.use(express.static('public'));
 
 app.get('/missions', function(req, resp){
-    resp.send('Hello world' + users.users[0].forename)
-})
+    resp.send({missions: missions});
+});
 
 app.listen(8090)
