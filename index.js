@@ -67,4 +67,16 @@ app.get('/missions', function(req, resp){
     resp.send({missions: missions});
 });
 
+app.post('/missions', function(req, res) {
+    var missionName = req.body.name;
+    currentMissionId++;
+
+    products.push({
+        id: currentMissionId,
+        name: missionName
+    });
+
+    res.send('Successfully created mission!');
+});
+
 app.listen(8090)
