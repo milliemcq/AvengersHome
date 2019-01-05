@@ -33,6 +33,7 @@ var users = {
 
 var missions = [
         {
+            "id": 1,
             "threat": "Brexit",
             "location": "London",
             "atRiskCount": 70000000,
@@ -41,6 +42,7 @@ var missions = [
         },
 
         {
+            "id": 2,
             "threat": "Trump",
             "location": "America",
             "atRiskCount": 300000000,
@@ -49,12 +51,15 @@ var missions = [
         },
 
         {
+            "id": 3,
             "threat": "Thanos",
             "location": "Whole Universe",
             "atRiskCount": 10000000000000000,
             "heroesAssigned" : [ "theking", "capA123", "doctorwhocomposer"]
         }
     ]
+
+var currentMissionId = 3;
 
 app.use(express.static('public'));
 
