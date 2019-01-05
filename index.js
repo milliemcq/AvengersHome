@@ -1,6 +1,10 @@
 "use strict"
 var express = require('express')
+var bodyParser = require('body-parser');
+
 var app = express()
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }));
 
 var users = {
     "users": [
@@ -68,14 +72,15 @@ app.get('/missions', function(req, resp){
 });
 
 app.post('/missions', function(req, res) {
-    console.log("HEREHEREHEREHhHHHHHHHUHOFUHWSEOIF JOEIJFOEIJFOIEWFH:OIEJF:OIEWJF:OEIWJF:OIEWJ:FOIEWJ:OF")
-    console.log(req);
-    var missionName = req.body;
+    debugger;
+
+    var missionName = req.body.threat
+    console.log(missionName);
     currentMissionId++;
 
     missions.push({
-        id: currentMissionId,
-        threat: missionName
+        "id": currentMissionId,
+        "threat": missionName
     });
 
     res.send('Successfully created mission!');

@@ -1,3 +1,4 @@
+//MISSIONS REQUESTS
 $(function () {
     // GET/READ
     $("#get-button").on('click', function() {
@@ -33,13 +34,15 @@ $(function () {
         event.preventDefault();
 
         var createInput = $('#create-input');
+        var data = {"threat": createInput.val()};
         console.log(createInput.val());
         $.ajax({
             url: '/missions',
             method: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify(createInput.val()),
+            data: JSON.stringify(data),
             success: function(response) {
+                console.log("hellO!");
                 console.log(response);
                 createInput.val('');
                 $('#get-button').click();
@@ -80,4 +83,8 @@ $(function () {
             }
         });
     });
+});
+
+$(function () {
+
 });
