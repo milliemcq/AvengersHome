@@ -223,26 +223,25 @@
     </script>
     -->
         <section id="missions">
-            <div id="missionsContainer">
+            <div id="missionsContainer" align="center">
 
 
                 </br>
                 <h1 style="color: white">Mission Control</h1>
                 <p>This is where you can see updated mission information as organised by Nick Fury</p>
                 </br>
-                <button id="get-button">READ/GET Missions</button>
+                <button id="get-button" style='visibility:hidden'></button>
                 <!--
                 <form id="create-form">
                     <input type="text" id="create-input">
                     <button>Create/PORT</button>
                 </form>
                 -->
-                <br>
-                <br>
-
                 <button>
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#mission-form">Add Mission</a>
+                    <a class="btn btn-outline-light" href="#" data-toggle="modal" data-target="#mission-form">Add Mission</a>
                 </button>
+                <br/>
+                <br/>
 
                 <div align="center" >
 
@@ -276,7 +275,7 @@
                 <div class="modal-header" style="height: 50px">
                     <h4 class="modal-title">Add a Mission</h4>
                     <span>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button id="mission-form-close-button" type="button" class="close" data-dismiss="modal">&times;</button>
                     </span>
                 </div>
                 <div class="modal-body">

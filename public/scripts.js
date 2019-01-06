@@ -53,6 +53,7 @@ $(function () {
                 console.log(response);
 
                 $('#get-button').click();
+                $('#mission-form-close-button').click();
             }
         });
     });
