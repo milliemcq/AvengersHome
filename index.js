@@ -71,6 +71,10 @@ app.get('/missions', function(req, resp){
     resp.send({missions: missions});
 });
 
+app.get('/furyOverview', function(req, resp){
+    resp.send({missions: missions});
+});
+
 app.post('/missions', function(req, res) {
 
     currentMissionId++;

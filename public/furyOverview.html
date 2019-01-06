@@ -4,13 +4,118 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="stylesheets/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="scripts.js"></script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Admin Page</title>
 </head>
 <body>
+<script>
+      $(document).ready(function () {
+                var tbodyEl = $('tbody');
+                $.getJSON('data.json',
+                    function(data) {
+                        console.log('BEFORE REMOVE BODY');
+                        tbodyEl.html('');
+                        data.missions.forEach(function (mission) {
+                            tbodyEl.append('\
+                    <tr>\
+                        <td>' + mission.threat +'</td>\
+                        <td>' + mission.location + '</td>\
+                        <td>' + mission.atRiskCount +'</td>\
+                        <td>' + mission.heroesAssigned+ '</td>\
+                        <td>\
+                        <button class="update-button"> UPDATE/PUT Button </button>\
+                        <button id="delete-mission" type="button" class="close" data-dismiss="modal">x</button>\
+                        </td>\
+                    </tr>\
+                    ');
+                        });
+                        });
+                    });
+
+      // UPDATE/PUT
+      $('table').on('click', '.update-button', function() {
+          var rowEl = $(this).closest('tr');
+          var id = rowEl.find('.id').text();
+          var newName = rowEl.find('.name').val();
+
+          $.ajax({
+              url: '/products/' + id,
+              method: 'PUT',
+              contentType: 'application/json',
+              data: JSON.stringify({ newName: newName }),
+              success: function(response) {
+                  console.log(response);
+                  $('#get-button').click();
+              }
+          });
+      });
+
+      // DELETE
+      $('table').on('click', '.delete-button', function() {
+          var rowEl = $(this).closest('tr');
+          var id = rowEl.find('.id').text();
+
+          $.ajax({
+              url: '/products/' + id,
+              method: 'DELETE',
+              contentType: 'application/json',
+              success: function(response) {
+                  console.log(response);
+                  $('#get-button').click();
+              }
+          });
+      });
+
+
+
+</script>
+
+
+
+<section id="missions">
+    <div id="missionsContainer" align="center">
+
+
+        </br>
+        <h1 style="color: white">Mission Control</h1>
+        <p>This is where you can see updated mission information as organised by Nick Fury</p>
+        </br>
+        <!--
+        <form id="create-form">
+            <input type="text" id="create-input">
+            <button>Create/PORT</button>
+        </form>
+        -->
+        <button type="button" class="btn btn-outline-light">
+            <a href="#" data-toggle="modal" data-target="#mission-form">Add Mission</a>
+        </button>
+        <br/>
+        <br/>
+
+        <div align="center" >
+
+            <div>
+                <table class="table" style="width: 85%">
+                    <thead>
+                    <tr class="table-light" >
+                        <th style="color: black">Threat Name</th>
+                        <th style="color: black">Threat Location</th>
+                        <th style="color: black">Number at Risk</th>
+                        <th style="color: black">Heroes Assigned</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
 
 </body>
 </html>
