@@ -18,26 +18,18 @@
     <div id="missionsContainer" align="center">
 
 
-        </br>
+        <br/>
         <h1 style="color: white">Mission Control</h1>
         <p>This is where you can see updated mission information as organised by Nick Fury</p>
-        </br>
-        <!--
-        <form id="create-form">
-            <input type="text" id="create-input">
-            <button>Create/PORT</button>
-        </form>
-        -->
-        <button type="button" class="btn btn-outline-light">
-            <a href="#" data-toggle="modal" data-target="#mission-form">Add Mission</a>
-        </button>
+
+        <button id="get-button" >Update View</button>
         <br/>
         <br/>
 
         <div align="center" >
 
             <div>
-                <table class="table" style="width: 85%">
+                <table id="mission-table" class="table" style="width: 85%">
                     <thead>
                     <tr class="table-light" >
                         <th style="color: black">Threat Name</th>
@@ -51,11 +43,11 @@
 
             </div>
         </div>
-
-        <div align="center" >
+        <br/>
+        <div align="center">
 
             <div>
-                <table class="table" style="width: 85%">
+                <table id="people-table" class="table" style="width: 85%">
                     <thead>
                     <tr class="table-light" >
                         <th style="color: black">Username</th>

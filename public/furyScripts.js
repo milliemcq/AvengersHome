@@ -15,15 +15,14 @@ $(document).ready(function () {
                     <td>' + mission.atRiskCount + '</td>\
                     <td>' + mission.heroesAssigned + '</td>\
                     <td>\
-                    <button class="update-button"> UPDATE/PUT Button </button>\
-                    <button id="delete-button" type="button" class="close" data-dismiss="modal">x</button>\
+                    <button class="update-button">Update</button>\
+                    <button id="delete-mission-button" type="button" class="close" style="color:white">x</button>\
                     </td>\
                     </tr>\
                 ');
             });
             console.log('FINSIHED');
         }
-
     })
 });
 
@@ -38,13 +37,13 @@ $(document).ready(function () {
             response.people.forEach(function (people) {
                 tbodyEl.append('\
                 <tr>\
-                    <td>' + people.username + '</td>\
+                    <td class="id">' + people.username + '</td>\
                     <td>' + people.forename + '</td>\
                     <td>' + people.surname + '</td>\
                     <td>' + people.alterEgo + '</td>\
                     <td>\
-                    <button class="update-button"> UPDATE/PUT Button </button>\
-                    <button id="delete-button" type="button" class="close" data-dismiss="modal">x</button>\
+                    <button class="update-button">Update</button>\
+                    <button class="delete-button">x</button>\
                     </td>\
                     </tr>\
                 ');
@@ -56,13 +55,13 @@ $(document).ready(function () {
 });
 
 
-$('table').on('click', 'delete-button', function() {
+$('table').on('click', 'delete-person-button', function() {
     var rowEl = $(this).closest('tr');
-    var id = rowEl.find('.id').text();
+    var id = rowEl.find('.username').text();
     var newName = rowEl.find('.name').val();
 
     $.ajax({
-        url: '/products/' + id,
+        url: '/people/' + id,
         method: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify({ newName: newName }),
@@ -73,18 +72,75 @@ $('table').on('click', 'delete-button', function() {
     });
 });
 
+$(function () {
+    $("#get-button").on('click', function() {
+        $.ajax({
+            url: '/missions',
+            contentType: 'application/json',
+            success: function (response) {
+                var tbodyEl = $('#mission-table-body');
+                tbodyEl.html('');
+                response.missions.forEach(function (mission) {
+                    tbodyEl.append('\
+                <tr>\
+                    <td>' + mission.threat + '</td>\
+                    <td>' + mission.location + '</td>\
+                    <td>' + mission.atRiskCount + '</td>\
+                    <td>' + mission.heroesAssigned + '</td>\
+                    <td>\
+                    <button class="update-button">Update</button>\
+                    <button id="delete-mission-button" type="button" class="close" style="color:white">x</button>\
+                    </td>\
+                    </tr>\
+                ');
+                });
+                console.log('FINSIHED');
+            }
+        });
 
-$('table').on('click', '.delete-button', function() {
-    var rowEl = $(this).closest('tr');
-    var id = rowEl.find('.id').text();
+        $.ajax({
+            url: '/people',
+            contentType: 'application/json',
+            success: function (response) {
+                var tbodyEl = $('#people-table-body');
+                tbodyEl.html('');
+                response.people.forEach(function (people) {
+                    tbodyEl.append('\
+                <tr>\
+                    <td class="id">' + people.username + '</td>\
+                    <td>' + people.forename + '</td>\
+                    <td>' + people.surname + '</td>\
+                    <td>' + people.alterEgo + '</td>\
+                    <td>\
+                    <button class="update-button">Update</button>\
+                    <button class="delete-button">x</button>\
+                    </td>\
+                    </tr>\
+                ');
+                });
+                console.log('FINSIHED');
+            }
 
-    $.ajax({
-        url: '/products/' + id,
-        method: 'DELETE',
-        contentType: 'application/json',
-        success: function(response) {
-            console.log(response);
-            $('#get-button').click();
-        }
+        })
+
+    });
+
+
+
+
+    $('#people-table').on('click', '.delete-button', function () {
+        console.log("close button clicked");
+        var rowEl = $(this).closest('tr');
+        var id = rowEl.find('.id').text();
+
+        $.ajax({
+            url: '/people/' + id,
+            method: 'DELETE',
+            contentType: 'application/json',
+            success: function (response) {
+                console.log(response);
+                $('#get-button').click();
+            }
+        });
     });
 });

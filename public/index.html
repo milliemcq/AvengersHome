@@ -20,12 +20,12 @@
         $(document).ready(function () {
             $.getJSON('data.json',
                 function(data) {
-                    var biggestRisk = data.events[0].atRiskCount;
-                    var biggestRiskEvent = data.events[0].threat
-                    for (var i = 0; i < data.events.length; i++) {
-                        if(data.events[i].atRiskCount > biggestRisk){
-                            biggestRisk = data.events[i].atRiskCount;
-                            biggestRiskEvent = data.events[i].threat;
+                    var biggestRisk = data.missions[0].atRiskCount;
+                    var biggestRiskEvent = data.missions[0].threat
+                    for (var i = 0; i < data.missions.length; i++) {
+                        if(data.missions[i].atRiskCount > biggestRisk){
+                            biggestRisk = data.missions[i].atRiskCount;
+                            biggestRiskEvent = data.missions[i].threat;
                         }
                     }
                     console.log(data.toString())
@@ -38,7 +38,7 @@
             $.getJSON('data.json',
                 function(data) {
 
-                    $("#numberOfMissions").text(data.events.length);
+                    $("#numberOfMissions").text(data.missions.length);
 
                 });
         });

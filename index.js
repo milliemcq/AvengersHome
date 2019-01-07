@@ -8,8 +8,7 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-var people = [
-                    {
+var people = [{
                         "username": "doctorwhocomposer",
                         "forename": "Delia",
                         "surname": "Derbyshire",
@@ -32,11 +31,13 @@ var people = [
                         "forename": "Steve",
                         "surname": "Rodgers",
                         "alterEgo": "Captain America"
-                    }
-                ];
+                    }];
 
-var missions = [
-                    {
+
+
+var missions = {
+                  "missions" : [
+                      {
                         "id" : 1,
                         "threat": "Brexit",
                         "location": "London",
@@ -60,8 +61,8 @@ var missions = [
                         "location": "Whole Universe",
                         "atRiskCount": 10000000000000000,
                         "heroesAssigned" : [ "theking", "capA123", "doctorwhocomposer"]
-                    }
-                ]
+                    }]
+                };
 
  var admin = {
      "username": "fury",
@@ -74,18 +75,15 @@ var currentMissionId = 3;
 app.use(express.static('public'));
 
 app.get('/missions', function(req, resp){
-    resp.send({missions: missions});
+    resp.send({missions: missions.missions});
 });
 
-app.get('/furyOverview', function(req, resp){
-    resp.send({missions: missions});
-});
 
 app.post('/missions', function(req, res) {
 
     currentMissionId++;
 
-    missions.push({
+    missions.missions.push({
         "id": currentMissionId,
         "threat": req.body.threat,
         "location": req.body.location,
@@ -103,8 +101,8 @@ app.get('/people', function(req, resp){
 var findUser = function (username) {
 
     for(var i = 0; i < people.length; i++){
-        if (people[i].username == username){
-            return people[i];
+        if (people.username == username){
+            return people;
         }
     }
     return "No User with that name found";
@@ -207,5 +205,23 @@ function verifyToken(req, res, next){
         res.sendStatus(403);
     }
 }*/
+
+app.delete('/people/:username', function(req, res) {
+    console.log("Deleting value in server")
+    var id = req.params.username;
+
+    var found = false;
+
+    people.forEach(function(person, index) {
+        if (!found && person.username === id) {
+            console.log("found and deleting");
+            console.log(index.toString());
+            console.log(person);
+            people.splice(index, 1);
+        }
+    });
+
+    res.send('deleted person');
+});
 
 app.listen(8090)
