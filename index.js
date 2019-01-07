@@ -9,21 +9,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var people = [
                     {
-                        "id" : 4,
                         "username": "doctorwhocomposer",
                         "forename": "Delia",
                         "surname": "Derbyshire",
                         "alterEgo": "The Composer"
                     },
                     {
-                        "id" : 2,
                         "username": "bowsnarrows",
                         "forename": "Clint",
                         "surname": "Barton",
                         "alterEgo": "Hawkeye"
                     },
                     {
-                        "id" : 3,
                         "username": "theking",
                         "forename": "Tony Stark",
                         "surname": "Stark",
@@ -98,6 +95,24 @@ app.post('/missions', function(req, res) {
 app.get('/people', function(req, resp){
     resp.send({people: people});
 });
+
+var findUser = function (username) {
+
+    for(var i = 0; i < people.length; i++){
+        if (people[i].username == username){
+            return people[i];
+        }
+    }
+    return "No User with that name found";
+};
+
+app.get('/people/:username', function(req, resp) {
+    var username = req.params.username;
+    var response = findUser(username);
+    resp.send(response);
+});
+
+
 
 
 
