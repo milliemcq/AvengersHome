@@ -1,6 +1,7 @@
 "use strict"
 var express = require('express')
 var bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
 
 var app = express()
 app.use(bodyParser.json()); // for parsing application/json
@@ -62,7 +63,10 @@ var missions = [
                     }
                 ]
 
-
+ var admin = {
+     "username": "fury",
+     "password": "password"
+ }
 
 
 var currentMissionId = 3;
@@ -112,8 +116,36 @@ app.get('/people/:username', function(req, resp) {
     resp.send(response);
 });
 
+app.post('/api/posts', verifyToken, (req, res) => {
+    res.json({
+        message: 'Post Created.........'
+    });
+});
+
+app.post('/api/login', (req, res) => {
+    jwt.sign({admin}, 'secretkey', (err, token) => {
+        res.json({
+            token
+        });
+    });
+});
+
+app.get('/api', (req, res) => {
+    res.json({
+        message: 'Welcome to the API'
+    });
+});
 
 
+function verifyToken(req, res, next){
+    const bearerHeader = req.headers['authoization'];
+    if(typeof bearerHeader !== 'undefined'){
 
+    }
+    else{
+        console.log("forbidden");
+        res.sendStatus(403);
+    }
+}
 
 app.listen(8090)
