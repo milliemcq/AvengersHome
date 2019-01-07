@@ -35,9 +35,8 @@ var people = [{
 
 
 
-var missions = {
-                  "missions" : [
-                      {
+var missions = [
+                   {
                         "id" : 1,
                         "threat": "Brexit",
                         "location": "London",
@@ -61,8 +60,8 @@ var missions = {
                         "location": "Whole Universe",
                         "atRiskCount": 10000000000000000,
                         "heroesAssigned" : [ "theking", "capA123", "doctorwhocomposer"]
-                    }]
-                };
+                    }];
+
 
  var admin = {
      "username": "fury",
@@ -75,7 +74,7 @@ var currentMissionId = 3;
 app.use(express.static('public'));
 
 app.get('/missions', function(req, resp){
-    resp.send({missions: missions.missions});
+    resp.send({missions: missions});
 });
 
 
@@ -83,7 +82,7 @@ app.post('/missions', function(req, res) {
 
     currentMissionId++;
 
-    missions.missions.push({
+    missions.push({
         "id": currentMissionId,
         "threat": req.body.threat,
         "location": req.body.location,
@@ -222,6 +221,24 @@ app.delete('/people/:username', function(req, res) {
     });
 
     res.send('deleted person');
+});
+
+app.delete('/missions/:id', function(req, res) {
+    console.log("Deleting value in server")
+    var id = req.params.id;
+
+    var found = false;
+
+    missions.forEach(function(mission, index) {
+        if (!found && mission.id === Number(id)) {
+            console.log("found and deleting");
+            console.log(index.toString());
+            console.log(mission);
+            missions.splice(index, 1);
+        }
+    });
+
+    res.send('deleted mission');
 });
 
 app.listen(8090)

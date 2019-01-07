@@ -10,13 +10,14 @@ $(document).ready(function () {
             response.missions.forEach(function (mission) {
                 tbodyEl.append('\
                 <tr>\
+                    <td>' + mission.id + '</td>\
                     <td>' + mission.threat + '</td>\
                     <td>' + mission.location + '</td>\
                     <td>' + mission.atRiskCount + '</td>\
                     <td>' + mission.heroesAssigned + '</td>\
                     <td>\
                     <button class="update-button">Update</button>\
-                    <button id="delete-mission-button" type="button" class="close" style="color:white">x</button>\
+                    <button class="delete-button">x</button>\
                     </td>\
                     </tr>\
                 ');
@@ -83,13 +84,14 @@ $(function () {
                 response.missions.forEach(function (mission) {
                     tbodyEl.append('\
                 <tr>\
+                    <td class="id">' + mission.id + '</td>\
                     <td>' + mission.threat + '</td>\
                     <td>' + mission.location + '</td>\
                     <td>' + mission.atRiskCount + '</td>\
                     <td>' + mission.heroesAssigned + '</td>\
                     <td>\
                     <button class="update-button">Update</button>\
-                    <button id="delete-mission-button" type="button" class="close" style="color:white">x</button>\
+                    <button class="delete-button">x</button>\
                     </td>\
                     </tr>\
                 ');
@@ -123,6 +125,22 @@ $(function () {
 
         })
 
+    });
+
+    $('#mission-table').on('click', '.delete-button', function () {
+        console.log("close button clicked");
+        var rowEl = $(this).closest('tr');
+        var id = rowEl.find('.id').text();
+
+        $.ajax({
+            url: '/missions/' + id,
+            method: 'DELETE',
+            contentType: 'application/json',
+            success: function (response) {
+                console.log(response);
+                $('#get-button').click();
+            }
+        });
     });
 
 
