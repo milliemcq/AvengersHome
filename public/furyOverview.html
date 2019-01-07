@@ -4,6 +4,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="stylesheets/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +12,34 @@
 </head>
 <body>
 <script src="furyScripts.js"></script>
+<!--
+<script>
+        $(document).ready(function () {
+            console.log("inside fury script");
+            $.ajax({
+                url: '/furyOverview',
+                method: 'GET',
+                contentType: 'application/json',
+                success: function (response) {
+                    var tbodyEl = $('tbody');
+                    tbodyEl.html('');
+                    response.missions.forEach(function (mission) {
+                        tbodyEl.append('\
+                    <tr>\
+                        <td>' + mission.threat + '</td>\
+                        <td>' + mission.location + '</td>\
+                        <td>' + mission.atRiskCount + '</td>\
+                        <td>' + mission.heroesAssigned + '</td>\
+                        </tr>\
+                    ');
+                    });
+                    console.log('FINSIHED');
+                }
 
+            })
+        })
+</script>
+-->
 
 
 <section id="missions">

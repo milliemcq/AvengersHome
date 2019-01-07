@@ -77,7 +77,7 @@ app.get('/missions', function(req, resp){
     resp.send({missions: missions});
 });
 
-app.get('/furyOverview.html', function(req, resp){
+app.get('/furyOverview', function(req, resp){
     resp.send({missions: missions});
 });
 
