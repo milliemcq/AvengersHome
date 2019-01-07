@@ -16,33 +16,6 @@
 
 
     <script>
-        /*setTimeout(function(){
-            odometer.innerHTML = 1546989;
-        }, 1000);
-
-
-        /*$(document).ready(function () {
-            $.getJSON('data.json', function(data) {
-                console.log(data.toString())
-                $("#title").text(data.users[1].forename);
-
-            });
-
-        });*/
-
-        /*$(document).ready(function () {
-            $.getJSON('data.json',
-                function(data) {
-                    var tr;
-                    for (var i = 0; i < data.users.length; i++) {
-                        tr = $('<tr/>');
-                        tr.append("<td>" + data.users[i].forename + "</td>");
-                        tr.append("<td>" + data.users[i].surname + "</td>");
-                        tr.append("<td>" + data.users[i].alterEgo + "</td>");
-                        $('table').append(tr);
-                    }
-                });
-        });*/
 
         $(document).ready(function () {
             $.getJSON('data.json',
@@ -70,15 +43,6 @@
                 });
         });
     </script>
-
-    <style type="text/css">
-         /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
-
-         .odometer {
-             font-size: 50px;
-         }
-    </style>
-
 
     <div>
     <!--THIS IS THE NAVBAR!!!-->
@@ -198,24 +162,7 @@
         </div>
 
     </section>
-    <!-- WORKING FORM
-    <form id="songform" action="http://127.0.0.1:8090">
-        <div>Song Name: <input name="title"></div>
-    </form>
-    <script>
-        function formhandler (){
-            alert('Form Submitted');
-            $.get("http://127.0.0.1:8090/missions", "title=hai",
-                    function (data){
-                        alert(data);
-                    });
-            return false;
 
-        };
-
-        $('#songform').on('submit', formhandler);
-    </script>
-    -->
         <section id="missions">
             <div id="missionsContainer" align="center">
 
@@ -225,12 +172,7 @@
                 <p>This is where you can see updated mission information as organised by Nick Fury</p>
                 </br>
                 <button id="get-button" >Show Current Missions</button>
-                <!--
-                <form id="create-form">
-                    <input type="text" id="create-input">
-                    <button>Create/PORT</button>
-                </form>
-                -->
+
                 <button type="button" class="btn btn-outline-light">
                     <a href="#" data-toggle="modal" data-target="#mission-form">Add Mission</a>
                 </button>
@@ -319,10 +261,5 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 </body>
 </html>

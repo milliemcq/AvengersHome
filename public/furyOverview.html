@@ -12,34 +12,6 @@
 </head>
 <body>
 <script src="furyScripts.js"></script>
-<!--
-<script>
-        $(document).ready(function () {
-            console.log("inside fury script");
-            $.ajax({
-                url: '/furyOverview',
-                method: 'GET',
-                contentType: 'application/json',
-                success: function (response) {
-                    var tbodyEl = $('tbody');
-                    tbodyEl.html('');
-                    response.missions.forEach(function (mission) {
-                        tbodyEl.append('\
-                    <tr>\
-                        <td>' + mission.threat + '</td>\
-                        <td>' + mission.location + '</td>\
-                        <td>' + mission.atRiskCount + '</td>\
-                        <td>' + mission.heroesAssigned + '</td>\
-                        </tr>\
-                    ');
-                    });
-                    console.log('FINSIHED');
-                }
-
-            })
-        })
-</script>
--->
 
 
 <section id="missions">
@@ -74,7 +46,25 @@
                         <th style="color: black">Heroes Assigned</th>
                     </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody id="mission-table-body"></tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <div align="center" >
+
+            <div>
+                <table class="table" style="width: 85%">
+                    <thead>
+                    <tr class="table-light" >
+                        <th style="color: black">Threat Name</th>
+                        <th style="color: black">Threat Location</th>
+                        <th style="color: black">Number at Risk</th>
+                        <th style="color: black">Heroes Assigned</th>
+                    </tr>
+                    </thead>
+                    <tbody id="people-table-body"></tbody>
                 </table>
 
             </div>

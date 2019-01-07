@@ -2,10 +2,10 @@
 $(document).ready(function () {
     console.log("inside fury script");
     $.ajax({
-        url: '/furyOverview',
+        url: '/missions',
         contentType: 'application/json',
         success: function (response) {
-            var tbodyEl = $('tbody');
+            var tbodyEl = $('#mission-table-body');
             tbodyEl.html('');
             response.missions.forEach(function (mission) {
                 tbodyEl.append('\
@@ -14,6 +14,10 @@ $(document).ready(function () {
                     <td>' + mission.location + '</td>\
                     <td>' + mission.atRiskCount + '</td>\
                     <td>' + mission.heroesAssigned + '</td>\
+                    <td>\
+                    <button class="update-button"> UPDATE/PUT Button </button>\
+                    <button id="delete-button" type="button" class="close" data-dismiss="modal">x</button>\
+                    </td>\
                     </tr>\
                 ');
             });
