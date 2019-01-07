@@ -27,6 +27,34 @@ $(document).ready(function () {
     })
 });
 
+$(document).ready(function () {
+    console.log("inside fury script");
+    $.ajax({
+        url: '/people',
+        contentType: 'application/json',
+        success: function (response) {
+            var tbodyEl = $('#people-table-body');
+            tbodyEl.html('');
+            response.people.forEach(function (people) {
+                tbodyEl.append('\
+                <tr>\
+                    <td>' + people.username + '</td>\
+                    <td>' + people.forename + '</td>\
+                    <td>' + people.surname + '</td>\
+                    <td>' + people.alterEgo + '</td>\
+                    <td>\
+                    <button class="update-button"> UPDATE/PUT Button </button>\
+                    <button id="delete-button" type="button" class="close" data-dismiss="modal">x</button>\
+                    </td>\
+                    </tr>\
+                ');
+            });
+            console.log('FINSIHED');
+        }
+
+    })
+});
+
 
 $('table').on('click', 'delete-button', function() {
     var rowEl = $(this).closest('tr');
