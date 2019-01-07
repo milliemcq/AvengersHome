@@ -55,6 +55,25 @@ $(function () {
         });
     });
 
+    $('#login-form').on('submit', function(event) {
+        event.preventDefault();
+
+
+
+        $.ajax({
+            url: '/furyOverview',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function(response) {
+                console.log("hellO!");
+                console.log(response);
+
+                $('#mission-form-close-button').click();
+            }
+        });
+    });
+
 
 });
 

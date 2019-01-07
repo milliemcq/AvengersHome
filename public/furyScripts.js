@@ -1,29 +1,27 @@
 $(function () {
     $(document).ready(function () {
-        var tbodyEl = $('tbody');
-        $.getJSON('data.json',
-            function(data) {
-                console.log('BEFORE REMOVE BODY');
+        $.ajax({
+            url: '/furyOverview.html',
+            contentType: 'application/json',
+            success: function (response) {
+                var tbodyEl = $('tbody');
                 tbodyEl.html('');
-                data.missions.forEach(function (mission) {
+                response.missions.forEach(function (mission) {
                     tbodyEl.append('\
                     <tr>\
-                        <td>' + mission.id + '</td>\
                         <td>' + mission.threat +'</td>\
                         <td>' + mission.location + '</td>\
                         <td>' + mission.atRiskCount +'</td>\
                         <td>' + mission.heroesAssigned+ '</td>\
-                        <td>\
-                        <button class="update-button"> UPDATE/PUT Button </button>\
-                        <button id="delete-button" type="button" class="close" data-dismiss="modal">x</button>\
-                        </td>\
-                    </tr>\
+                        </tr>\
                     ');
                 });
-            });
+                console.log('FINSIHED');
+         };
+          });
     });
 
-    // UPDATE/PUT
+
     $('table').on('click', 'delete-button', function() {
         var rowEl = $(this).closest('tr');
         var id = rowEl.find('.id').text();
@@ -41,7 +39,7 @@ $(function () {
         });
     });
 
-    // DELETE
+
     $('table').on('click', '.delete-button', function() {
         var rowEl = $(this).closest('tr');
         var id = rowEl.find('.id').text();
@@ -56,7 +54,4 @@ $(function () {
             }
         });
     });
-
-
-
 }

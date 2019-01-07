@@ -106,7 +106,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="missions.html">Missions</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#Login">Login</a>
                 </li>
@@ -178,6 +177,8 @@
 
         <p>Found on this site are pages about the Avengers, there is also a private members area for <br/> members of S.H.I.E.L.D to co-ordinate current missions.</p>
     </div>
+
+
 
 
     <section class="grid-1" style="height: 300px">
@@ -304,11 +305,11 @@
                 <div class="modal-header" style="height: 50px">
                     <h4 class="modal-title">Login</h4>
                     <span>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <button id="login-form-close-button" type="button" class="close" data-dismiss="modal">&times;</button>
                         </span>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="login-form">
                         <label for="username-input">Username</label>
                         <input type="text" class="form-control" id="username-input" size="15" maxlength="30" placeholder="username"/>
                         <br/>
@@ -319,7 +320,7 @@
                                 Don't have an account?
                                 <label><a href="/Account/Signup">Signup</a></label>
                             </span>
-                        <button type="button" class="btn btn-dark" style="float: right">Login</button>
+                        <button class="btn btn-dark" style="float: right"  onclick="location.href='http://localhost:8090/furyOverview.html'">Login</button>
                     </form>
                 </div>
             </div>
