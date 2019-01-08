@@ -44,6 +44,7 @@
 
             </div>
         </div>
+
         <br/>
         <div align="center">
 
@@ -62,10 +63,47 @@
 
             </div>
         </div>
-
+        <br/>
+        <button type="button" class="btn btn-outline-light">
+            <a href="#" data-toggle="modal" data-target="#avenger-form">Add Avenger</a>
+        </button>
 
     </div>
 </section>
+
+<div class="modal fade" id="avenger-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="height: 50px">
+                <h4 class="modal-title">Add an Avenger</h4>
+                <span>
+                        <button id="mission-form-close-button" type="button" class="close" data-dismiss="modal">&times;</button>
+                    </span>
+            </div>
+            <div class="modal-body">
+                <form id="create-form">
+                    <label for="username-input">Username</label>
+                    <input type="text" class="form-control" id="username-input" size="15" maxlength="30" placeholder="Name"/>
+                    <br/>
+                    <label for="threat-location-input">Forename</label>
+                    <input type="text" class="form-control" id="threat-location-input" size="15" maxlength="30" placeholder="Location"/>
+                    <br/>
+                    <label for="num-at-risk-input">Surname</label>
+                    <input type="text" class="form-control" id="num-at-risk-input" size="15" maxlength="30" placeholder="At Risk"/>
+                    <br/>
+                    <label for="num-at-risk-input">Surname</label>
+                    <input type="text" class="form-control" id="num-at-risk-input" size="15" maxlength="30" placeholder="At Risk"/>
+                    <br/>
+                    <label for="num-at-risk-input">Alter Ego</label>
+                    <input type="text" class="form-control" id="num-at-risk-input" size="15" maxlength="30" placeholder="At Risk"/>
+                    <br/>
+
+                    <button class="btn btn-dark" style="float: right">Add Mission</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </body>
