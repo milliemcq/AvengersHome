@@ -134,14 +134,23 @@ app.get('/api', function api(req, res) {
     });
 });
 
-app.post('/login', (req, res) => {
-
-
-    const token = "concertina"
-    res.json({
-        message: 'Authenticated! Use this token in the "Authorization" header',
-        token: token
+app.post('/login', (req, resp) => {
+    console.log("checking login credentials");
+    console.log(req);
+    if(req.body.username === admin.username && req.body.password == admin.password)
+    {
+        const token = "concertina"
+        resp.json({
+            message: 'Authenticated! Use this token in the "Authorization" header',
+            token: token
+        });
+    }
+    resp.json({
+        message: 'Incorrect Username/Password',
+        token: null
     });
+
+
 });
 
 app.get('/api/protected', ensureToken, (req, res) => {
@@ -169,53 +178,7 @@ function ensureToken(req, res, next) {
 }
 
 
-/*
-app.post('/api/posts', verifyToken, (req, res) => {
-    jwt.verify(req.token, 'secretkey', (err, authData) => {
-        if (err) {
-            res.sendStatus(403);
-        } else {
-            res.json({
-                message: 'Post created...',
-                authData
-            });
-        }
-        ;
-    });
-});
 
-app.post('/api/login', (req, res) => {
-    jwt.sign({admin}, 'secretkey', {expiresIn: '10h'} (err, token) => {
-        res.json({
-            token
-        });
-    });
-});
-
-app.get('/api', (req, res) => {
-    res.json({
-        message: 'Welcome to the API'
-    });
-});
-
-
-function verifyToken(req, res, next){
-    const bearerHeader = req.headers['authoization'];
-    if(typeof bearerHeader !== 'undefined'){
-        // Split at the space
-        const bearer = bearerHeader.split(' ');
-        // Get token from array
-        const bearerToken = bearer[1];
-        // Set the token
-        req.token = bearerToken;
-        // Next middleware
-        next();
-    }
-    else{
-        console.log("forbidden");
-        res.sendStatus(403);
-    }
-}*/
 
 app.delete('/people/:username', function(req, res) {
     console.log("Deleting value in server")

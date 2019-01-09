@@ -1,36 +1,14 @@
 
-$(document).ready(function () {
-    console.log("inside fury script");
-    $.ajax({
-        url: '/missions',
-        contentType: 'application/json',
-        success: function (response) {
-            var tbodyEl = $('#mission-table-body');
-            tbodyEl.html('');
-            response.missions.forEach(function (mission) {
-                tbodyEl.append('\
-                <tr>\
-                    <td>' + mission.id + '</td>\
-                    <td>' + mission.threat + '</td>\
-                    <td>' + mission.location + '</td>\
-                    <td>' + mission.atRiskCount + '</td>\
-                    <td>' + mission.heroesAssigned + '</td>\
-                    <td>\
-                    <button class="update-button">Update</button>\
-                    <button class="delete-button">x</button>\
-                    </td>\
-                    </tr>\
-                ');
-            });
-            console.log('FINSIHED');
-        }
-    })
-});
-
+/*
 $(document).ready(function () {
     console.log("inside fury script");
 
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
+    if(token == null){
+        console.log("NO TOKEN");
+        debugger;
+        return;
+    };
     $.ajax({
         url: '/people',
         contentType: 'application/json',
@@ -54,11 +32,11 @@ $(document).ready(function () {
                     </tr>\
                 ');
             });
-            console.log('FINSIHED');
+            console.log('FINISHED');
         }
 
     })
-});
+});*/
 
 
 $('table').on('click', 'delete-person-button', function() {
@@ -80,9 +58,20 @@ $('table').on('click', 'delete-person-button', function() {
 
 $(function () {
     $("#get-button").on('click', function() {
+        console.log("Get button clicked!!!!!")
+        const token = localStorage.getItem("token");
+        if(token == null){
+            console.log("NO TOKEN WON'T LOAD");
+            debugger;
+            return;
+        };
+
         $.ajax({
             url: '/missions',
             contentType: 'application/json',
+            beforeSend: (xhr) => {
+                xhr.setRequestHeader('Authorization', token)
+            },
             success: function (response) {
                 var tbodyEl = $('#mission-table-body');
                 tbodyEl.html('');
@@ -101,7 +90,7 @@ $(function () {
                     </tr>\
                 ');
                 });
-                console.log('FINSIHED');
+                console.log('FINISHED MISSIONS');
             }
         });
 
@@ -125,7 +114,7 @@ $(function () {
                     </tr>\
                 ');
                 });
-                console.log('FINSIHED');
+                console.log('FINSIHED MISSIONS');
             }
 
         })
@@ -162,7 +151,7 @@ $(function () {
             });
         });
 
-        $.ajax({
+        /*$.ajax({
             url: '/people',
             contentType: 'application/json',
             success: function (response) {
@@ -182,10 +171,10 @@ $(function () {
                     </tr>\
                 ');
                 });
-                console.log('FINSIHED');
+                console.log('FINSIHED PEOPLE');
             }
 
-        });
+        });*/
 
 
 

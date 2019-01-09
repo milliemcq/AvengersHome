@@ -18,7 +18,7 @@ $(function () {
                         </tr>\
                     ');
                });
-               console.log('FINSIHED');
+               console.log('FINISHED');
            }
        });
     });
@@ -57,24 +57,35 @@ $(function () {
 
     $('#login-form').on('submit', function(event) {
         event.preventDefault();
+        var username = $('#username-input').val();
+        var password = $('#password-input').val();
 
+        console.log("Login form submitted")
 
+        data = {
+            "username": username,
+            "password": password
+        };
 
         $.ajax({
-            url: '/furyOverview',
+            url: '/login',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function(response) {
                 console.log("hellO!");
                 console.log(response);
-
+                if(response.token != null) {
+                    localStorage.setItem("token", response.token);
+                }
+                /*
                 response.json()
                     .then(x => {
                        localStorage.setItem("token", x.token)
-                    });
+                    });*/
+                window.location.href = "http://localhost:8090/furyOverview.html";
 
-                $('#mission-form-close-button').click();
+                $('#login-form-close-button').click();
             }
         });
     });
