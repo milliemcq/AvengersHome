@@ -100,6 +100,38 @@ $(function () {
             }
         });
 
+        //CREATE/POST
+        // CREATE/POST
+        $('#create-avenger-form').on('submit', function(event) {
+            event.preventDefault();
+            console.log("Create avenger form ajax hit");
+            var usernameInput = $('#username-input').val();
+            var forenameInput = $('#forename-input').val();
+            var surnameInput = $('#surname-input').val();
+            var alterEgoInput = $('#alter-ego-input').val();
+
+            var data = {
+                "username": usernameInput,
+                "forename": forenameInput,
+                "surname": surnameInput,
+                "alterEgo": alterEgoInput
+            };
+
+            $.ajax({
+                url: '/people',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function(response) {
+                    console.log("create avenger form");
+                    console.log(response);
+
+                    $('#get-button').click();
+                    $('#avenger-form-close-button').click();
+                }
+            });
+        });
+
         $.ajax({
             url: '/people',
             contentType: 'application/json',

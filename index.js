@@ -93,6 +93,21 @@ app.post('/missions', function(req, res) {
     res.send('Successfully created mission!');
 });
 
+
+app.post('/people', function(req, res) {
+    console.log("Adding an Avenger");
+
+    people.push({
+        "username": req.body.username,
+        "forename": req.body.forename,
+        "surname": req.body.surname,
+        "alterEgo": req.body.alterEgo
+    });
+    console.log(people);
+
+    res.send('Successfully created mission!');
+});
+
 app.get('/people', function(req, resp){
     resp.send({people: people});
 });
