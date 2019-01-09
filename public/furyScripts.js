@@ -29,9 +29,14 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     console.log("inside fury script");
+
+    const token = localStorage.getItem("token")
     $.ajax({
         url: '/people',
         contentType: 'application/json',
+        beforeSend: (xhr) => {
+            xhr.setRequestHeader('Authorization', token)
+        },
         success: function (response) {
             var tbodyEl = $('#people-table-body');
             tbodyEl.html('');

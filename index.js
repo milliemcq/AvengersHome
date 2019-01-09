@@ -134,13 +134,10 @@ app.get('/api', function api(req, res) {
     });
 });
 
-app.post('/api/login', (req, res) => {
+app.post('/login', (req, res) => {
 
-    // insert code here to actually authenticate, or fake it
-    const user = { id: 3 };
 
-    // then return a token, secret key should be an env variable
-    const token = jwt.sign({ user: user.id }, 'secret_key_goes_here');
+    const token = "concertina"
     res.json({
         message: 'Authenticated! Use this token in the "Authorization" header',
         token: token

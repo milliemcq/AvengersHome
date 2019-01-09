@@ -69,6 +69,11 @@ $(function () {
                 console.log("hellO!");
                 console.log(response);
 
+                response.json()
+                    .then(x => {
+                       localStorage.setItem("token", x.token)
+                    });
+
                 $('#mission-form-close-button').click();
             }
         });
