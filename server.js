@@ -129,8 +129,8 @@ app.get('/people', function(req, resp){
 var findUser = function (username) {
 
     for(var i = 0; i < people.length; i++){
-        if (people.username == username){
-            return people;
+        if (people[i].username == username){
+            return people[i];
         }
     }
     return "No User with that name found";
@@ -171,9 +171,10 @@ app.post('/login', (req, resp) => {
 
 
 function ensureToken(req, res, next) {
-    if(req.access_token == 'concertina'){
+    console.log(req.body);
+    if(req.body.access_token == 'concertina'){
         next();
-    }
+    };
     const bearerHeader = req.headers["authorization"];
     if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(" ");
