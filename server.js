@@ -74,6 +74,7 @@ var currentMissionId = 3;
 app.use(express.static('public'));
 
 app.get('/missions', function(req, resp){
+
     resp.send({missions: missions});
 });
 
@@ -94,8 +95,18 @@ app.post('/missions', function(req, res) {
 });
 
 
-app.post('/people', function(req, res) {
+app.post('/people', ensureToken, function(req, res) {
     console.log("Adding an Avenger");
+    people.forEach(function(person, index) {
+        console.log(req.body.username)
+        console.log(person.username);
+        if (person.username == req.body.username) {
+            res.sendStatus(400);
+            console.log("detected duplicate avenger")
+            return;
+        }
+        ;
+    });
 
     people.push({
         "username": req.body.username,
@@ -103,12 +114,14 @@ app.post('/people', function(req, res) {
         "surname": req.body.surname,
         "alterEgo": req.body.alterEgo
     });
-    console.log(people);
+    //console.log(people);
 
     res.send('Successfully created Avenger!');
 });
 
-app.get('/people', function(req, resp){
+
+app.get('/people', ensureToken, function(req, resp){
+    console.log("Returning people");
     resp.send({people: people});
 });
 
@@ -145,15 +158,17 @@ app.post('/login', (req, resp) => {
             token: token
         });
     }
-    resp.json({
-        message: 'Incorrect Username/Password',
-        token: null
-    });
+    else {
+        resp.json({
+            message: 'Incorrect Username/Password',
+            token: null
+        });
+    }
 
 
 });
 
-app.get('/api/protected', ensureToken, (req, res) => {
+/*app.get('/api/protected', ensureToken, (req, res) => {
     jwt.verify(req.token, 'secret_key_goes_here', function(err, data) {
         if (err) {
             res.sendStatus(403);
@@ -163,14 +178,19 @@ app.get('/api/protected', ensureToken, (req, res) => {
             });
         }
     });
-});
+});*/
 
 function ensureToken(req, res, next) {
+    debugger;
     const bearerHeader = req.headers["authorization"];
     if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(" ");
         const bearerToken = bearer[1];
-        req.token = bearerToken;
+        if(bearerToken !== 'concertina'){
+            console.log("sending 403");
+            res.sendStatus(403);
+            return;
+        }
         next();
     } else {
         res.sendStatus(403);
@@ -216,4 +236,4 @@ app.delete('/missions/:id', function(req, res) {
     res.send('deleted mission');
 });
 
-app.listen(8090)
+app.listen(8090);

@@ -77,15 +77,16 @@ $(function () {
                 console.log(response);
                 if(response.token != null) {
                     localStorage.setItem("token", response.token);
+                    window.location.href = "http://localhost:8090/furyOverview.html";
                 }
-                /*
-                response.json()
-                    .then(x => {
-                       localStorage.setItem("token", x.token)
-                    });*/
-                window.location.href = "http://localhost:8090/furyOverview.html";
+                else{
+                    $('#validation-label').text(response.message);
+                    $('#validation-label').show();
 
-                $('#login-form-close-button').click();
+                }
+
+                //TODO Hide validation error on close button click
+                /*$('#login-form-close-button').click();*/
             }
         });
     });

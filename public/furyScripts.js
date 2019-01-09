@@ -61,17 +61,13 @@ $(function () {
         console.log("Get button clicked!!!!!")
         const token = localStorage.getItem("token");
         if(token == null){
-            console.log("NO TOKEN WON'T LOAD");
-            debugger;
-            return;
+            console.log("NO TOKEN");
         };
 
         $.ajax({
             url: '/missions',
             contentType: 'application/json',
-            beforeSend: (xhr) => {
-                xhr.setRequestHeader('Authorization', token)
-            },
+
             success: function (response) {
                 var tbodyEl = $('#mission-table-body');
                 tbodyEl.html('');
@@ -97,6 +93,10 @@ $(function () {
         $.ajax({
             url: '/people',
             contentType: 'application/json',
+            beforeSend: (xhr) => {
+                debugger;
+                xhr.setRequestHeader('Authorization', "bearer " + token)
+            },
             success: function (response) {
                 var tbodyEl = $('#people-table-body');
                 tbodyEl.html('');
@@ -135,6 +135,7 @@ $(function () {
                 "surname": surnameInput,
                 "alterEgo": alterEgoInput
             };
+
             console.log(data);
             $.ajax({
                 url: '/people',
@@ -144,9 +145,13 @@ $(function () {
                 success: function(response) {
                     console.log("create avenger form");
                     console.log(response);
-
                     $('#get-button').click();
                     $('#avenger-form-close-button').click();
+                    $('#validation-label').style.display = 'none';
+                },
+                error: function(){
+                    $('#validation-label').text("Username already in use");
+                    $('#validation-label').style.display = 'block';
                 }
             });
         });
@@ -197,7 +202,7 @@ $(function () {
 
 
 
-    $('#people-table').on('click', '.delete-button', function () {
+    $('#people-table').on('click', '.delete-button',  function () {
         console.log("close button clicked");
         var rowEl = $(this).closest('tr');
         var id = rowEl.find('.id').text();
