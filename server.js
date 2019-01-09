@@ -229,3 +229,5 @@ app.delete('/missions/:id', function(req, res) {
 });
 
 app.listen(8090);
+
+module.exports = app;
