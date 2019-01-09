@@ -100,8 +100,33 @@ $(function () {
             }
         });
 
-        //CREATE/POST
-        // CREATE/POST
+        $.ajax({
+            url: '/people',
+            contentType: 'application/json',
+            success: function (response) {
+                var tbodyEl = $('#people-table-body');
+                tbodyEl.html('');
+                response.people.forEach(function (people) {
+                    tbodyEl.append('\
+                <tr>\
+                    <td class="id">' + people.username + '</td>\
+                    <td>' + people.forename + '</td>\
+                    <td>' + people.surname + '</td>\
+                    <td>' + people.alterEgo + '</td>\
+                    <td>\
+                    <button class="update-button">Update</button>\
+                    <button class="delete-button">x</button>\
+                    </td>\
+                    </tr>\
+                ');
+                });
+                console.log('FINSIHED');
+            }
+
+        })
+    });
+
+
         $('#create-avenger-form').on('submit', function(event) {
             event.preventDefault();
             console.log("Create avenger form ajax hit");
@@ -116,7 +141,7 @@ $(function () {
                 "surname": surnameInput,
                 "alterEgo": alterEgoInput
             };
-
+            console.log(data);
             $.ajax({
                 url: '/people',
                 method: 'POST',
@@ -155,9 +180,9 @@ $(function () {
                 console.log('FINSIHED');
             }
 
-        })
+        });
 
-    });
+
 
     $('#mission-table').on('click', '.delete-button', function () {
         console.log("close button clicked");
@@ -194,3 +219,4 @@ $(function () {
         });
     });
 });
+

@@ -105,7 +105,7 @@ app.post('/people', function(req, res) {
     });
     console.log(people);
 
-    res.send('Successfully created mission!');
+    res.send('Successfully created Avenger!');
 });
 
 app.get('/people', function(req, resp){
