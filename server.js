@@ -101,7 +101,7 @@ app.post('/people', ensureToken, function(req, res) {
     people.forEach(function(person, index) {
         console.log(req.body.username)
         console.log(person.username);
-        if (person.username == req.body.username) {
+        if (person.username == req.body.username || person.username == req.headers.username) {
             res.sendStatus(400);
             console.log("detected duplicate avenger")
             return;
@@ -171,8 +171,7 @@ app.post('/login', (req, resp) => {
 
 
 function ensureToken(req, res, next) {
-    console.log(req.body);
-    if(req.body.access_token == 'concertina'){
+    if(req.headers.access_token == 'concertina'){
         next();
     };
     const bearerHeader = req.headers["authorization"];
