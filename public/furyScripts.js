@@ -59,10 +59,7 @@ $('table').on('click', 'delete-person-button', function() {
 $(function () {
     $("#get-button").on('click', function() {
         console.log("Get button clicked!!!!!")
-        const token = localStorage.getItem("token");
-        if(token == null){
-            console.log("NO TOKEN");
-        };
+
 
         $.ajax({
             url: '/missions',
@@ -93,10 +90,7 @@ $(function () {
         $.ajax({
             url: '/people',
             contentType: 'application/json',
-            beforeSend: (xhr) => {
-                debugger;
-                xhr.setRequestHeader('Authorization', "bearer " + token)
-            },
+
             success: function (response) {
                 var tbodyEl = $('#people-table-body');
                 tbodyEl.html('');
@@ -122,6 +116,11 @@ $(function () {
 
 
         $('#create-avenger-form').on('submit', function(event) {
+            const token = localStorage.getItem("token");
+            if(token == null){
+                console.log("NO TOKEN");
+            };
+
             event.preventDefault();
             console.log("Create avenger form ajax hit");
             var usernameInput = $('#username-input').val();
@@ -141,17 +140,20 @@ $(function () {
                 url: '/people',
                 method: 'POST',
                 contentType: 'application/json',
+                beforeSend: (xhr) => {
+                    xhr.setRequestHeader('Authorization', "bearer " + token)
+                },
                 data: JSON.stringify(data),
                 success: function(response) {
                     console.log("create avenger form");
                     console.log(response);
                     $('#get-button').click();
                     $('#avenger-form-close-button').click();
-                    $('#validation-label').style.display = 'none';
+                    //$('#validation-label').style.display = 'none';
                 },
                 error: function(){
                     $('#validation-label').text("Username already in use");
-                    $('#validation-label').style.display = 'block';
+                    //$('#validation-label').style.display = 'block';
                 }
             });
         });

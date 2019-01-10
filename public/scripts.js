@@ -85,10 +85,13 @@ $(function () {
 
                 }
 
-                //TODO Hide validation error on close button click
-                /*$('#login-form-close-button').click();*/
+
             }
         });
+    });
+
+    $("#login-form-close-button").on('click', function() {
+       //TODO hide validation label
     });
 
 
