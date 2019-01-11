@@ -158,31 +158,6 @@ $(function () {
             });
         });
 
-        /*$.ajax({
-            url: '/people',
-            contentType: 'application/json',
-            success: function (response) {
-                var tbodyEl = $('#people-table-body');
-                tbodyEl.html('');
-                response.people.forEach(function (people) {
-                    tbodyEl.append('\
-                <tr>\
-                    <td class="id">' + people.username + '</td>\
-                    <td>' + people.forename + '</td>\
-                    <td>' + people.surname + '</td>\
-                    <td>' + people.alterEgo + '</td>\
-                    <td>\
-                    <button class="update-button">Update</button>\
-                    <button class="delete-button">x</button>\
-                    </td>\
-                    </tr>\
-                ');
-                });
-                console.log('FINSIHED PEOPLE');
-            }
-
-        });*/
-
 
 
     $('#mission-table').on('click', '.delete-button', function () {
