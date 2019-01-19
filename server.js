@@ -13,25 +13,33 @@ var people = [{
                         "username": "doctorwhocomposer",
                         "forename": "Delia",
                         "surname": "Derbyshire",
-                        "alterEgo": "The Composer"
+                        "alterEgo": "The Composer",
+                        "abilities" : [ "Composition", "General Awesomeness"],
+                        "photo" : "deliad.jpg"
                     },
                     {
                         "username": "bowsnarrows",
                         "forename": "Clint",
                         "surname": "Barton",
-                        "alterEgo": "Hawkeye"
+                        "alterEgo": "Hawkeye",
+                        "abilities" : [ "Archery", "Supersight"],
+                        "photo" : "hawkeye.jpg"
                     },
                     {
                         "username": "theking",
                         "forename": "Tony Stark",
                         "surname": "Stark",
-                        "alterEgo": "Iron Man"
+                        "alterEgo": "Iron Man",
+                        "abilities" : [ "Super Strength", "Rocket Blasters", "Insane Intelligence"],
+                        "photo" : "ironman.jpg"
                     },
                     {
                         "username": "capA123",
                         "forename": "Steve",
                         "surname": "Rodgers",
-                        "alterEgo": "Captain America"
+                        "alterEgo": "Captain America",
+                        "abilities" : [ "Super Human", "Vibranium Shield"],
+                        "photo" : "ironman.jpg"
                     }];
 
 
