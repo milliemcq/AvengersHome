@@ -13,6 +13,7 @@ p {
 table thead th { color: white; font-size:10pt; }
 
 h1 {
+    color: white;
     font-family: "Helvetica Neue",
     Helvetica, Arial, sans-serif;
     font-size: 24px;
@@ -20,7 +21,7 @@ h1 {
     font-variant: normal;
     font-weight: normal;
     line-height: 26px;
-    color: white;
+    
     opacity: 1;
 }
 

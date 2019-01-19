@@ -18,6 +18,12 @@
     <script>
 
         $(document).ready(function () {
+            console.log("Document ready clicking get button");
+            $('#get-button').click();
+        });
+
+
+        $(document).ready(function () {
             $.getJSON('data.json',
                 function(data) {
                     var biggestRisk = data.missions[0].atRiskCount;
@@ -171,9 +177,9 @@
                 <h1 style="color: white">Mission Control</h1>
                 <p>This is where you can see updated mission information as organised by Nick Fury</p>
                 </br>
-                <button id="get-button" >Show Current Missions</button>
+                <button id="get-button" style="display: none;">Show Current Missions</button>
 
-                <button type="button" class="btn btn-outline-light">
+                <button type="button" class="btn btn-light">
                     <a href="#" data-toggle="modal" data-target="#mission-form">Add Mission</a>
                 </button>
                 <br/>
@@ -184,8 +190,8 @@
                     <div>
                         <table class="table" style="width: 85%">
                             <thead>
-                                <tr class="table-light" >
-                                    <th style="color: black">Threat Name</th>
+                                <tr class="table-light" style>
+                                    <th style="color: black; align: left;">Threat Name</th>
                                     <th style="color: black">Threat Location</th>
                                     <th style="color: black">Number at Risk</th>
                                     <th style="color: black">Heroes Assigned</th>
