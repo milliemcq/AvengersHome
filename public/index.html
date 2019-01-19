@@ -43,13 +43,34 @@
                 function(data) {
 
                     $("#numberOfMissions").text(data.missions.length);
+                    startCounting();
 
                 });
 
 
 
 
+
+
         });
+
+        function startCounting()
+        {
+
+            $('.counter').each(function () {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 10000,
+                    easing: 'swing',
+                    step: function (now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
+            });
+        };
+
+
 
 
     </script>
@@ -156,16 +177,17 @@
     <section class="grid-1" style="height: 300px">
 
         <div class="item-1">
-            <div align="center">
+            <div align="center" >
                 <h3 style="color: white;">Lives Saved: </h3>
-                <div>1,234,567</div>
+                </br>
+                <h1 class="counter">1234567</h1>
             </div>
         </div>
         <div class="item-2">
             <div align="center">
                  <h3 style="color: white;">Current Mission Count:</h3>
                  </br>
-                 <h1 id="numberOfMissions"></h1>
+                 <h1 id="numberOfMissions" class="counter"></h1>
             </div>
         </div>
         <div class="item-2">
