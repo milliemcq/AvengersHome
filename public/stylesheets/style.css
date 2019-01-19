@@ -7,6 +7,7 @@ a {
 }
 
 p {
+    font-weight: lighter;
   color:white;
 }
 
@@ -19,13 +20,21 @@ h1 {
     font-size: 24px;
     font-style: normal;
     font-variant: normal;
-    font-weight: normal;
+    font-weight: lighter;
     line-height: 26px;
-    
+
     opacity: 1;
 }
 
 h2 {
+    font-size: 50px;
+    font-weight: lighter;
+    color: white;
+}
+
+h3 {
+    font-size: 30px;
+    font-weight: lighter;
     color: white;
 }
 
@@ -134,4 +143,13 @@ tr {
 .column {
     float: left;
     flex: 50%;
+}
+
+
+.counter
+{
+    line-height: 100px;
+    color:white;
+    margin-left:30px;
+    font-size:25px;
 }

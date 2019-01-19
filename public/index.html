@@ -20,10 +20,7 @@
         $(document).ready(function () {
             console.log("Document ready clicking get button");
             $('#get-button').click();
-        });
 
-
-        $(document).ready(function () {
             $.getJSON('data.json',
                 function(data) {
                     var biggestRisk = data.missions[0].atRiskCount;
@@ -37,17 +34,24 @@
                     console.log(data.toString())
                     $("#greatestThreatLabel").text(biggestRiskEvent);
 
-                });
-        });
 
-        $(document).ready(function () {
+
+
+                });
+
             $.getJSON('data.json',
                 function(data) {
 
                     $("#numberOfMissions").text(data.missions.length);
 
                 });
+
+
+
+
         });
+
+
     </script>
 
     <div>
@@ -127,16 +131,21 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+<br/>
+
 
     <!-- Welcome -->
 <section id="content">
     <div id="container">
     <div align="center" >
         </br>
-        <h1 style="color: white">Welcome to the Avengers</h1>
+
+        <h1 style="color: white; font-size: 80px; font-weight: lighter">Welcome to the Avengers</h1>
 
 
-
+        <br/>
+        <br/>
+        <br/>
 
         <p>Found on this site are pages about the Avengers, there is also a private members area for <br/> members of S.H.I.E.L.D to co-ordinate current missions.</p>
     </div>
@@ -174,7 +183,7 @@
 
 
                 </br>
-                <h1 style="color: white">Mission Control</h1>
+                <h1 style="color: white; font-size: 30px">Mission Control</h1>
                 <p>This is where you can see updated mission information as organised by Nick Fury</p>
                 </br>
                 <button id="get-button" style="display: none;">Show Current Missions</button>
