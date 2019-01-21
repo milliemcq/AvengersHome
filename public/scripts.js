@@ -94,8 +94,17 @@ $(function () {
         //TODO hide validation label
     });
 
+    $("#thanos-button").on('click', function() {
+        console.log("Changing Background");
+        var element = document.getElementById( 'full-body' );
+        element.style.cssText = "background: #663399 !important;";
+        element.style.setProperty('background', '#663399 ', 'important');
+
+    });
+
 
 
 
 });
+
 

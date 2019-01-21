@@ -133,3 +133,8 @@ tr {
 #full-body {
     background:#000000;
 }
+
+#thanos-button {
+    background-color: rebeccapurple;
+    border-color: rebeccapurple;
+}
