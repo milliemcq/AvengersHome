@@ -118,7 +118,7 @@
     </div>
 
 
-
+<body id="full-body">
     <!--HOMEPAGE-->
     <!-- Carosel -->
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -234,7 +234,20 @@
                 <br />
                 <br />
                 <br />
+                <button id="thanos-button" type="button" class="btn btn-success" style="background-color: rebeccapurple !important;">Activate Thanos Mode</button>
+                <script>
+                    $("#thanos-button").on('click', function() {
+                        console.log("Changing Background");
+                        var element = document.getElementById( 'full-body' );
+                        element.style.cssText = "background: #663399 !important;";
+                        element.style.setProperty('background', '#663399 ', 'important');
 
+                    });
+                </script>
+                <br />
+                <br />
+                <br />
+                <br />
 
             </div>
         </section>

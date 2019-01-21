@@ -91,12 +91,11 @@ $(function () {
     });
 
     $("#login-form-close-button").on('click', function() {
-       //TODO hide validation label
+        //TODO hide validation label
     });
 
 
-});
 
-$(function () {
 
 });
+

@@ -1,6 +1,4 @@
-body {
-    background:#000000 !important;
-}
+
 
 a {
   color: #00B7FF;
@@ -38,10 +36,7 @@ h3 {
     color: white;
 }
 
-body {
 
-  background: #f5f7f8;
-}
 
 
 
@@ -133,4 +128,8 @@ tr {
 .furyButton{
     border: none;
     background: none;
+}
+
+#full-body {
+    background:#000000;
 }
