@@ -140,6 +140,7 @@ tr {
 }
 
 #avengers-nav {
-    background-color: #000000;
+    background-color: #000000 !important;
+;
     border-color: #000000;
 }

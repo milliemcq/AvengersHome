@@ -23,6 +23,18 @@ $(function () {
        });
     });
 
+    $("#thanos-button").on('click', function() {
+        $.ajax({
+            url: '/thanos',
+            method: 'GET',
+            contentType: 'application/json',
+            //data: JSON.stringify(data),
+            success: function(response) {
+                console.log(response);
+            }
+        });
+    });
+
     //GET FURY OVERVIEW
 
     //CREATE/POST

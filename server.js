@@ -128,6 +128,12 @@ app.post('/people', ensureToken, function(req, res) {
     res.send('Successfully created Avenger!');
 });
 
+app.get('/thanos', function(req, res) {
+    var n = Math.round(people.length/2);
+    people.splice(0, n);
+    res.send("Deleted People");
+});
+
 
 app.get('/people', function(req, resp){
     console.log("Returning people");
