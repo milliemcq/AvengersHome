@@ -56,7 +56,7 @@ $('table').on('click', 'delete-person-button', function() {
     });
 });*/
 
-$('table').on('click', 'update-person-button', function() {
+$('table').on('click', 'update-button', function() {
     var rowEl = $(this).closest('tr');
     var id = rowEl.find('.username').text();
     var newName = rowEl.find('.name').val();
@@ -118,6 +118,7 @@ $(function () {
                     <td>' + people.forename + '</td>\
                     <td>' + people.surname + '</td>\
                     <td>' + people.alterEgo + '</td>\
+                    <td>' + people.abilities + '</td>\
                     <td>\
                     <button class="update-button">Update</button>\
                     <button class="delete-button">x</button>\
