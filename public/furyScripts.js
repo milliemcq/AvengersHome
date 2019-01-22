@@ -149,12 +149,14 @@ $(function () {
             var forenameInput = $('#forename-input').val();
             var surnameInput = $('#surname-input').val();
             var alterEgoInput = $('#alter-ego-input').val();
+            var abilities = $('#abilities-input').val();
 
             var data = {
                 "username": usernameInput,
                 "forename": forenameInput,
                 "surname": surnameInput,
-                "alterEgo": alterEgoInput
+                "alterEgo": alterEgoInput,
+                "abilities": abilities
             };
 
             console.log(data);

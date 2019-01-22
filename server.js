@@ -121,7 +121,8 @@ app.post('/people', ensureToken, function(req, res) {
         "username": req.body.username,
         "forename": req.body.forename,
         "surname": req.body.surname,
-        "alterEgo": req.body.alterEgo
+        "alterEgo": req.body.alterEgo,
+        "abilities": req.body.abilities
     });
     //console.log(people);
 
