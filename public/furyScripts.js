@@ -94,7 +94,9 @@ $(function () {
                     <td>' + mission.atRiskCount + '</td>\
                     <td>' + mission.heroesAssigned + '</td>\
                     <td>\
-                    <button class="update-button">Update</button>\
+                    <button class="update-button">\
+                    <a href="#" data-toggle="modal" data-target="#update-mission-form">Update</a>\
+                    </button>\
                     <button class="delete-button">x</button>\
                     </td>\
                     </tr>\
@@ -120,7 +122,9 @@ $(function () {
                     <td>' + people.alterEgo + '</td>\
                     <td>' + people.abilities + '</td>\
                     <td>\
-                    <button class="update-button">Update</button>\
+                    <button class="update-button">\
+                    <a href="#" data-toggle="modal" data-target="#update-person-form">Update</a>\
+                    </button>\
                     <button class="delete-button">x</button>\
                     </td>\
                     </tr>\

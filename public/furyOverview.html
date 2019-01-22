@@ -25,7 +25,7 @@
 
         <br/>
         <h1 style="color: white">Mission Control</h1>
-        <p>This is where you can see updated mission information as organised by Nick Fury</p>
+        <p>Avengers organisation HQ. For Nick Fury's Eyes only.</p>
 
         <button style="display: none;" id="get-button" >Update View</button>
         <br/>
@@ -104,6 +104,69 @@
                     <button class="btn btn-dark" style="float: right">Add Avenger</button>
                 </form>
                 <label id="validation-label" style="color:red" type="hidden"></label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="update-person-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="height: 50px">
+                <h4 class="modal-title">Add an Avenger</h4>
+                <span>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </span>
+            </div>
+            <div class="modal-body">
+                <form id="mission-update-form">
+
+                    <input type="text" class="form-control" id="threat-name-update" size="15" maxlength="30" placeholder="Username"/>
+                    <br/>
+                    <label for="forename-input">Forename</label>
+                    <input type="text" class="form-control" id="threat-location-update" size="15" maxlength="30" placeholder="Forename"/>
+                    <br/>
+                    <label for="surname-input">Surname</label>
+                    <input type="text" class="form-control" id="number-at-risk" size="15" maxlength="30" placeholder="Surname"/>
+                    <br/>
+                    <label for="alter-ego-input">Alter Ego</label>
+                    <input type="text" class="form-control" id="heroes-assigned-update" size="15" maxlength="30" placeholder="Alter Ego"/>
+                    <br/>
+
+                    <button class="btn btn-dark" style="float: right">Update Avenger</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="update-mission-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="height: 50px">
+                <h4 class="modal-title">Update a Mission</h4>
+                <span>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </span>
+            </div>
+            <div class="modal-body">
+                <form id="udpate-mission-form">
+                    <label for="username-input">Username</label>
+                    <input type="text" class="form-control" size="15" maxlength="30" placeholder="Username"/>
+                    <br/>
+                    <label for="forename-input">Forename</label>
+                    <input type="text" class="form-control" id="forename-update-input" size="15" maxlength="30" placeholder="Forename"/>
+                    <br/>
+                    <label for="surname-input">Surname</label>
+                    <input type="text" class="form-control" id="surname-update-input" size="15" maxlength="30" placeholder="Surname"/>
+                    <br/>
+                    <label for="alter-ego-input">Alter Ego</label>
+                    <input type="text" class="form-control" id="alter-ego-update-input" size="15" maxlength="30" placeholder="Alter Ego"/>
+                    <br/>
+
+                    <button class="btn btn-dark" style="float: right">Update Mission</button>
+                </form>
             </div>
         </div>
     </div>
