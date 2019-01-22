@@ -36,7 +36,7 @@ $(document).ready(function () {
         }
 
     })
-});*/
+});
 
 
 $('table').on('click', 'delete-person-button', function() {
@@ -49,6 +49,23 @@ $('table').on('click', 'delete-person-button', function() {
         method: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify({ newName: newName }),
+        success: function(response) {
+            console.log(response);
+            $('#get-button').click();
+        }
+    });
+});*/
+
+$('table').on('click', 'update-person-button', function() {
+    var rowEl = $(this).closest('tr');
+    var id = rowEl.find('.username').text();
+    var newName = rowEl.find('.name').val();
+
+    $.ajax({
+        url: '/people/' + id,
+        method: 'GET',
+        contentType: 'application/json',
+        //data: JSON.stringify({ newName: newName }),
         success: function(response) {
             console.log(response);
             $('#get-button').click();
