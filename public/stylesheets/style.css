@@ -144,3 +144,7 @@ tr {
 ;
     border-color: #000000;
 }
+
+#add-button {
+    color: white !important;
+}
