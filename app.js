@@ -186,7 +186,7 @@ app.post('/login', (req, resp) => {
         });
     }
     else if (checkLoginCredidentials(req.body.username.trim(), req.body.password.trim())){
-        const token = "guitar"
+        const token = req.body.username;
         resp.json({
            message: "User Authenticated! Token Attatched",
            token: token

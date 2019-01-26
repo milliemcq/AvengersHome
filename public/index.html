@@ -15,66 +15,6 @@
 <script src="scripts.js"></script>
 
 
-    <script>
-
-        $(document).ready(function () {
-            console.log("Document ready clicking get button");
-            $('#get-button').click();
-
-            $.getJSON('data.json',
-                function(data) {
-                    var biggestRisk = data.missions[0].atRiskCount;
-                    var biggestRiskEvent = data.missions[0].threat
-                    for (var i = 0; i < data.missions.length; i++) {
-                        if(data.missions[i].atRiskCount > biggestRisk){
-                            biggestRisk = data.missions[i].atRiskCount;
-                            biggestRiskEvent = data.missions[i].threat;
-                        }
-                    }
-                    console.log(data.toString())
-                    $("#greatest-threat-label").text(biggestRiskEvent);
-
-
-
-
-                });
-
-            $.getJSON('data.json',
-                function(data) {
-
-                    $("#numberOfMissions").text(data.missions.length);
-                    startCounting();
-
-                });
-
-
-
-
-
-
-        });
-
-        function startCounting()
-        {
-
-            $('.counter').each(function () {
-                $(this).prop('Counter', 0).animate({
-                    Counter: $(this).text()
-                }, {
-                    duration: 10000,
-                    easing: 'swing',
-                    step: function (now) {
-                        $(this).text(Math.ceil(now));
-                    }
-                });
-            });
-        };
-
-
-
-
-    </script>
-
     <div>
     <!--THIS IS THE NAVBAR!!!-->
     <nav id="avengers-nav" class="navbar navbar-expand-lg navbar-dark bg-dark"  >

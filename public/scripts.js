@@ -1,15 +1,14 @@
-//MISSIONS REQUESTS
-$(function () {
-    // GET HOMEPAGE
+$(document).ready(function () {
+
     $("#get-button").on('click', function() {
-       $.ajax({
-           url: '/missions',
-           contentType: 'application/json',
-           success: function (response) {
-               var tbodyEl = $('tbody');
-               tbodyEl.html('');
-               response.missions.forEach(function (mission) {
-                   tbodyEl.append('\
+        $.ajax({
+            url: '/missions',
+            contentType: 'application/json',
+            success: function (response) {
+                var tbodyEl = $('tbody');
+                tbodyEl.html('');
+                response.missions.forEach(function (mission) {
+                    tbodyEl.append('\
                     <tr>\
                         <td>' + mission.threat +'</td>\
                         <td>' + mission.location + '</td>\
@@ -17,11 +16,69 @@ $(function () {
                         <td>' + mission.heroesAssigned+ '</td>\
                         </tr>\
                     ');
-               });
-               console.log('FINISHED');
-           }
-       });
+                });
+                console.log('FINISHED');
+            }
+        });
     });
+
+
+    console.log("Document ready clicking get button");
+    $('#get-button').click();
+
+    $.getJSON('data.json',
+        function(data) {
+            var biggestRisk = data.missions[0].atRiskCount;
+            var biggestRiskEvent = data.missions[0].threat
+            for (var i = 0; i < data.missions.length; i++) {
+                if(data.missions[i].atRiskCount > biggestRisk){
+                    biggestRisk = data.missions[i].atRiskCount;
+                    biggestRiskEvent = data.missions[i].threat;
+                }
+            }
+            console.log(data.toString())
+            $("#greatest-threat-label").text(biggestRiskEvent);
+
+
+
+
+        });
+
+    $.getJSON('data.json',
+        function(data) {
+
+            $("#numberOfMissions").text(data.missions.length);
+            startCounting();
+
+        });
+
+
+
+
+
+
+});
+
+function startCounting()
+{
+
+    $('.counter').each(function () {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 10000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+};
+
+
+
+$(function () {
+    // GET HOMEPAGE
 
     $("#thanos-button").on('click', function() {
         $.ajax({
@@ -89,7 +146,20 @@ $(function () {
                 console.log(response);
                 if(response.token != null) {
                     localStorage.setItem("token", response.token);
-                    window.location.href = "http://localhost:8090/furyOverview.html";
+                    if(response.token === "concertina") {
+                        //TODO Change this so it works in the cloud
+                        window.location.href = "http://localhost:8090/furyOverview.html";
+                    }
+                    else{
+                        console.log("Loading Profile Page");
+                        $('#login-form-close-button').click();
+                        var url = "profile.html";
+                        $('#container').remove();
+                        $('#content').load(url + ' #container').hide();
+                        $('#content').fadeIn('slow');
+                        $('#get-button').click();
+
+                    }
                 }
                 else{
                     $('#validation-label').text(response.message);
