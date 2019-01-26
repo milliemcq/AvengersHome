@@ -12,7 +12,7 @@ p {
 table thead th { color: white; font-size:10pt; }
 
 h1 {
-    color: white;
+    color: silver;
     font-family: "Helvetica Neue",
     Helvetica, Arial, sans-serif;
     font-size: 24px;
@@ -27,13 +27,13 @@ h1 {
 h2 {
     font-size: 50px;
     font-weight: lighter;
-    color: white;
+    color: silver;
 }
 
 h3 {
     font-size: 30px;
     font-weight: lighter;
-    color: white;
+    color: silver;
 }
 
 
@@ -41,7 +41,7 @@ h3 {
 
 
 tr {
-    color: white;
+    color: silver;
 }
 
 
@@ -59,7 +59,7 @@ tr {
 /* items */
 
 .grid-1 div {
-  color: white;
+  color: silver;
   font-size: 20px;
   padding: 20px;
 }
@@ -75,10 +75,6 @@ tr {
 
 
 
-
-
-
-/* warn against lack of browser support */
 
 .nope {
   display: block;

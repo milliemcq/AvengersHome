@@ -117,6 +117,35 @@ $(function () {
 
     });
 
+    $("#home-button").on('click', function() {
+        $('#get-button').click();
+        console.log("Get button clicked on reload")
+
+    });
+
+    $('#about-button').on('click', function(e) {
+        e.preventDefault();
+        var url = this.href;
+        $('#container').remove();
+        $('#content').load(url + ' #container').hide();
+        $('#content').fadeIn('slow');
+        $('#get-button').click();
+
+
+    });
+
+    $('#home-button').on('click', function(e) {
+        e.preventDefault();
+        var url = this.href;
+        $('#container').remove();
+        $('#content').load(url + ' #container').hide();
+        location.reload(true);
+        $('#content').fadeIn('slow');
+
+        $('#get-button').click();
+
+
+    });
 
 
 
