@@ -6,7 +6,7 @@ a {
 
 p {
     font-weight: lighter;
-  color:white;
+  color:silver;
 }
 
 table thead th { color: white; font-size:10pt; }
@@ -118,7 +118,7 @@ tr {
 
 .counter
 {
-
+    font-size: 50px;
 }
 
 .furyButton{
@@ -137,10 +137,20 @@ tr {
 
 #avengers-nav {
     background-color: #000000 !important;
-;
+
     border-color: #000000;
 }
 
 #add-button {
-    color: white !important;
+    color: silver !important;
+}
+
+#title-welcome {
+    color: silver;
+    font-size: 80px;
+    font-weight: lighter;
+}
+
+#greatest-threat-label {
+    font-size: 50px;
 }
