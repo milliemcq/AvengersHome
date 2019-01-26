@@ -177,7 +177,7 @@ app.get('/api', function api(req, res) {
 app.post('/login', (req, resp) => {
     console.log("checking login credentials");
     console.log(req);
-    if(req.body.username === admin.username && req.body.password == admin.password)
+    if(req.body.username.trim() === admin.username && req.body.password.trim() == admin.password)
     {
         const token = "concertina"
         resp.json({
@@ -185,7 +185,7 @@ app.post('/login', (req, resp) => {
             token: token
         });
     }
-    else if (checkLoginCredidentials(req.body.username, req.body.password)){
+    else if (checkLoginCredidentials(req.body.username.trim(), req.body.password.trim())){
         const token = "guitar"
         resp.json({
            message: "User Authenticated! Token Attatched",
@@ -262,13 +262,22 @@ app.delete('/missions/:id', function(req, res) {
 });
 
 function checkLoginCredidentials(username, password){
+    console.log("trying login credentials against users");
+    console.log(username);
+    console.log(password)
+    var found = false
     users.forEach(function(user, index){
-        if(user.username == username && user.password == password)
+        console.log(user);
+        console.log(user.username)
+        console.log(username);
+        if(user.username === username && user.password === password)
         {
-            return true;
+            console.log("Returning True");
+            found = true;
+            return;
         }
     });
-    return false;
+    return found;
 }
 
 app.listen(8090);
