@@ -20,7 +20,6 @@ h1 {
     font-variant: normal;
     font-weight: lighter;
     line-height: 26px;
-
     opacity: 1;
 }
 
@@ -56,7 +55,7 @@ tr {
     height: 100vh;
 }
 
-/* items */
+
 
 .grid-1 div {
   color: silver;
@@ -64,7 +63,7 @@ tr {
   padding: 20px;
 }
 
-/* specific item styles */
+
 
 .box1 {
     grid-column-start: 1;

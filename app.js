@@ -77,6 +77,17 @@ var missions = [
      "password": "password"
  }
 
+ var users = [
+     {
+         "username": "capA123",
+         "password": "password"
+     },
+
+     {
+         "username": "theking",
+         "password": "password"
+     }];
+
 
 var currentMissionId = 3;
 
@@ -170,8 +181,15 @@ app.post('/login', (req, resp) => {
     {
         const token = "concertina"
         resp.json({
-            message: 'Authenticated! Use this token in the "Authorization" header',
+            message: 'Authenticated Admin!',
             token: token
+        });
+    }
+    else if (checkLoginCredidentials(req.body.username, req.body.password)){
+        const token = "guitar"
+        resp.json({
+           message: "User Authenticated! Token Attatched",
+           token: token
         });
     }
     else {
@@ -242,6 +260,16 @@ app.delete('/missions/:id', function(req, res) {
 
     res.send('deleted mission');
 });
+
+function checkLoginCredidentials(username, password){
+    users.forEach(function(user, index){
+        if(user.username == username && user.password == password)
+        {
+            return true;
+        }
+    });
+    return false;
+}
 
 app.listen(8090);
 

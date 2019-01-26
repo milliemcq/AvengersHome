@@ -96,8 +96,6 @@ $(function () {
                     $('#validation-label').show();
 
                 }
-
-
             }
         });
     });
