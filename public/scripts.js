@@ -52,7 +52,7 @@ $(document).ready(function () {
 
         });
 
-
+    $('#login-modal').modal({ show: false})
 
 
 
@@ -226,9 +226,39 @@ $(function () {
         $('#content').fadeIn('slow');
 
         $('#get-button').click();
-
-
     });
+
+    $('#profile-nav-button').on('click', function(e) {
+        e.preventDefault();
+        const token = localStorage.getItem("token");
+        if(token == null){
+            console.log("open modal");
+            alert("You must login to view this page");
+        }
+        else {
+            $('#container').hide();
+            $('#profile-content').show();
+            $('#profile-content').fadeIn('slow');
+        }
+    });
+
+    $("#login-nav-label").on('click', function(e)
+        {
+            e.preventDefault();
+            const token = localStorage.getItem("token");
+            if(token == null){
+                console.log("open modal");
+                $('#login-modal').modal('show');
+            }
+            else{
+                $('#login-nav-label').empty()
+                localStorage.clear();
+                location.reload(true);
+                $('#login-nav-label').text('Login');
+
+            }
+        }
+    );
 
 
 });
