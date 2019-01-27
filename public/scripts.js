@@ -149,6 +149,8 @@ $(function () {
                     if(response.token === "concertina") {
                         //TODO Change this so it works in the cloud
                         window.location.href = "http://localhost:8090/furyOverview.html";
+                        $('#login-nav-label').empty()
+                        $('#login-nav-label').text('Logout');
                     }
                     else{
                         var user = response.userjson;
@@ -160,7 +162,7 @@ $(function () {
                         $('#first-name-label').text(user.forename);
                         $('#surname-label').text(user.surname);
                         $('#alter-label').text(user.alterEgo);
-
+                        document.getElementById("profile-image").src = user.photo;
                         $("#abilities-list").empty();
                         $.each(user.abilities, function(i, v, d) {
                             $("#abilities-list").append('<li>' + v  + '</li>');

@@ -15,7 +15,7 @@ var people = [{
                         "surname": "Derbyshire",
                         "alterEgo": "The Composer",
                         "abilities" : [ "Composition", "General Awesomeness"],
-                        "photo" : "deliad.jpg"
+                        "photo" : "images/deliad.jpg"
                     },
                     {
                         "username": "bowsnarrows",
@@ -23,7 +23,7 @@ var people = [{
                         "surname": "Barton",
                         "alterEgo": "Hawkeye",
                         "abilities" : [ "Archery", "Supersight"],
-                        "photo" : "hawkeye.jpg"
+                        "photo" : "images/hawkeye.jpg"
                     },
                     {
                         "username": "theking",
@@ -31,7 +31,7 @@ var people = [{
                         "surname": "Stark",
                         "alterEgo": "Iron Man",
                         "abilities" : [ "Super Strength", "Rocket Blasters", "Insane Intelligence"],
-                        "photo" : "ironman.jpg"
+                        "photo" : "images/ironman.jpg"
                     },
                     {
                         "username": "capA123",
@@ -39,7 +39,7 @@ var people = [{
                         "surname": "Rodgers",
                         "alterEgo": "Captain America",
                         "abilities" : [ "Super Human", "Vibranium Shield"],
-                        "photo" : "ironman.jpg"
+                        "photo" : "images/steve.jpg"
                     }];
 
 
