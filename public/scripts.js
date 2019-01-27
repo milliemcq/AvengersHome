@@ -153,12 +153,7 @@ $(function () {
                     else{
                         console.log("Loading Profile Page");
                         $('#login-form-close-button').click();
-                        var url = "profile.html";
-                        $('#container').remove();
-                        $('#content').load(url + ' #container').hide();
-                        $('#content').fadeIn('slow');
-                        $('#get-button').click();
-
+                        var e = document.getElementById(content);
                     }
                 }
                 else{

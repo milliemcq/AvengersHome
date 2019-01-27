@@ -49,6 +49,10 @@ tr {
     color: silver;
 }
 
+li {
+    color: silver;
+}
+
 
 
 .grid-1 {
@@ -158,4 +162,9 @@ tr {
 
 #greatest-threat-label {
     font-size: 50px;
+}
+
+.pname {
+    display: inline-block;
+    vertical-align: top;
 }
