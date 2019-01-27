@@ -94,9 +94,6 @@ $(function () {
                     <td>' + mission.atRiskCount + '</td>\
                     <td>' + mission.heroesAssigned + '</td>\
                     <td>\
-                    <button class="update-button">\
-                    <a href="#" data-toggle="modal" data-target="#update-mission-form">Update</a>\
-                    </button>\
                     <button class="delete-button">x</button>\
                     </td>\
                     </tr>\
@@ -122,9 +119,6 @@ $(function () {
                     <td>' + people.alterEgo + '</td>\
                     <td>' + people.abilities + '</td>\
                     <td>\
-                    <button class="update-button">\
-                    <a href="#" data-toggle="modal" data-target="#update-person-form">Update</a>\
-                    </button>\
                     <button class="delete-button">x</button>\
                     </td>\
                     </tr>\
@@ -173,11 +167,9 @@ $(function () {
                     console.log(response);
                     $('#get-button').click();
                     $('#avenger-form-close-button').click();
-                    //$('#validation-label').style.display = 'none';
                 },
                 error: function(){
                     $('#validation-label').text("Username already in use");
-                    //$('#validation-label').style.display = 'block';
                 }
             });
         });
