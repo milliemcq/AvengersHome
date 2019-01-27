@@ -153,7 +153,10 @@ $(function () {
                     else{
                         console.log("Loading Profile Page");
                         $('#login-form-close-button').click();
-                        var e = document.getElementById(content);
+                        $('#container').hide();
+                        $('#profile-content').show();
+                        $('#profile-content').fadeIn('slow');
+
                     }
                 }
                 else{
@@ -190,6 +193,7 @@ $(function () {
         e.preventDefault();
         var url = this.href;
         $('#container').remove();
+        $('#profile-content').hide();
         $('#content').load(url + ' #container').hide();
         $('#content').fadeIn('slow');
         $('#get-button').click();
@@ -211,7 +215,20 @@ $(function () {
     });
 
 
-
 });
+
+function toggle_visibility(id) {
+    console.log("changing visability")
+    var e = document.getElementById(id);
+    if (e.style.display == 'block')
+        e.style.display = 'none';
+    else
+        e.style.display = 'block';
+        console.log("should show");
+}
+
+
+
+
 
 
