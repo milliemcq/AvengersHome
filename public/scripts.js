@@ -165,11 +165,11 @@ $(function () {
                         $.each(user.abilities, function(i, v, d) {
                             $("#abilities-list").append('<li>' + v  + '</li>');
                         });
-
-
-
+                        $('#login-nav-label').empty()
+                        $('#login-nav-label').text('Logout');
                         $('#profile-content').show();
                         $('#profile-content').fadeIn('slow');
+
 
                     }
                 }
