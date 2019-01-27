@@ -151,9 +151,23 @@ $(function () {
                         window.location.href = "http://localhost:8090/furyOverview.html";
                     }
                     else{
-                        console.log("Loading Profile Page");
+                        var user = response.userjson;
+                        console.log(user);
                         $('#login-form-close-button').click();
                         $('#container').hide();
+
+                        $('#id-label').text(user.username);
+                        $('#first-name-label').text(user.forename);
+                        $('#surname-label').text(user.surname);
+                        $('#alter-label').text(user.alterEgo);
+
+                        $("#abilities-list").empty();
+                        $.each(user.abilities, function(i, v, d) {
+                            $("#abilities-list").append('<li>' + v  + '</li>');
+                        });
+
+
+
                         $('#profile-content').show();
                         $('#profile-content').fadeIn('slow');
 

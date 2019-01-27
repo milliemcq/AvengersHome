@@ -187,9 +187,12 @@ app.post('/login', (req, resp) => {
     }
     else if (checkLoginCredidentials(req.body.username.trim(), req.body.password.trim())){
         const token = req.body.username;
+        var user = findUser(req.body.username)
+        console.log(user);
         resp.json({
            message: "User Authenticated! Token Attatched",
-           token: token
+           token: token,
+            userjson: user
         });
     }
     else {
