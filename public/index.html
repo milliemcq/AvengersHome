@@ -262,7 +262,9 @@
                         <li></li>
                         <li></li>
                     </ul>
-                    <button id="add-ability-button">Add Ability</button>
+                    <button type="button" class="btn btn-link">
+                        <a href="#" id="add-ability-button"  data-toggle="modal" data-target="#add-ability-form">Add Ability</a>
+                    </button>
                     <br/>
                     <br/>
 
@@ -280,7 +282,27 @@
 </div>
 
 
+<div class="modal fade" id="add-ability-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="height: 50px">
+                <h4 class="modal-title">Add an Ability</h4>
+                <span>
+                        <button id="ability-form-close-button" type="button" class="close" data-dismiss="modal">&times;</button>
+                    </span>
+            </div>
+            <div class="modal-body">
+                <form id="ability-form">
+                    <label for="ability-input">Ability</label>
+                    <input type="text" class="form-control" id="ability-input" size="15" maxlength="30" placeholder="Name"/>
+                    <br/>
 
+                    <button class="btn btn-dark" style="float: right">Add Ability</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </html>
