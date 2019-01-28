@@ -109,7 +109,7 @@ app.post('/missions', function(req, res) {
         "location": req.body.location,
         "atRiskCount": req.body.atRiskCount
     });
-    console.log(missions);
+    //console.log(missions);
 
     res.send('Successfully created mission!');
 });
@@ -118,8 +118,8 @@ app.post('/missions', function(req, res) {
 app.post('/people', ensureToken, function(req, res) {
     console.log("Adding an Avenger");
     people.forEach(function(person, index) {
-        console.log(req.body.username)
-        console.log(person.username);
+        //console.log(req.body.username)
+        //console.log(person.username);
         if (person.username == req.body.username || person.username == req.headers.username) {
             res.sendStatus(400);
             console.log("detected duplicate avenger")
@@ -139,6 +139,22 @@ app.post('/people', ensureToken, function(req, res) {
 
     res.send('Successfully created Avenger!');
 });
+
+
+app.post('/addability', ensureToken, function(req, res) {
+    console.log("Updating Ability List");
+    var username = req.body.userID;
+    var newAbility = req.body.newAbility;
+
+    var avenger = findUser(username);
+
+    avenger.abilities.append(newAbility);
+
+    console.log(avenger);
+
+    res.send('Successfully updated Avenger!');
+});
+
 
 app.get('/thanos', function(req, res) {
     var n = Math.round(people.length/2);

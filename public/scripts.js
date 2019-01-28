@@ -124,6 +124,38 @@ $(function () {
         });
     });
 
+    $('#ability-form').on('submit', function(event) {
+
+        const token = localStorage.getItem("token");
+        if(token == null){
+            console.log("NO TOKEN");
+        };
+
+        event.preventDefault();
+        console.log("Create avenger form ajax hit");
+        var usernameInput = $('#id-label').val();
+        var newAbility = $('#ability-input').val();
+        var data = {
+            "userID": usernameInput,
+            "newAbility": newAbility
+        }
+        console.log("Triggered add Ability");
+
+        $.ajax({
+            url: '/addability',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function(response) {
+                console.log("hellO!");
+                console.log(response);
+
+                $('#get-button').click();
+                $('#mission-form-close-button').click();
+            }
+        });
+    });
+
     $('#login-form').on('submit', function(event) {
         event.preventDefault();
         var username = $('#username-input').val();
