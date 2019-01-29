@@ -231,7 +231,7 @@ function ensureToken(req, res, next) {
     if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(" ");
         const bearerToken = bearer[1];
-        if(bearerToken !== 'guitar'){
+        if(bearerToken !== 'guitar' || bearerToken !== 'concertina'){
             console.log("sending 403");
             res.sendStatus(403);
             return;
