@@ -134,7 +134,8 @@ $(function () {
         event.preventDefault();
 
         console.log("Create avenger form ajax hit");
-        var usernameInput = $('#id-label').val();
+        var usernameInput = $('#id-label').text();
+        console.log(usernameInput)
         var newAbility = $('#ability-input').val();
 
         var data = {
@@ -152,9 +153,12 @@ $(function () {
             data: JSON.stringify(data),
             success: function(response) {
                 console.log(response);
+                $("#abilities-list").empty();
+                $.each(response.abilities, function(i, v, d) {
+                    $("#abilities-list").append('<li>' + v  + '</li>');
+                });
+                $('#ability-form-close-button').click();
 
-                $('#get-button').click();
-                $('#mission-form-close-button').click();
             }
         });
     });
@@ -288,7 +292,6 @@ $(function () {
             else{
                 $('#login-nav-label').empty()
                 localStorage.clear();
-                location.reload(true);
                 $('#login-nav-label').text('Login');
 
             }

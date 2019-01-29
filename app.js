@@ -149,15 +149,11 @@ app.post('/people', ensureToken, function(req, res) {
 app.post('/addability', ensureToken, function(req, res) {
     console.log("Updating Ability List");
     var username = req.body.userID;
+    //console.log(req.body.userID);
     var newAbility = req.body.newAbility;
-
     var avenger = findUser(username);
-    //TODO this doens't work like this
-    avenger.abilities.append(newAbility);
-
-    //console.log(avenger);
-
-    res.send('Successfully updated Avenger!');
+    avenger.abilities.push(newAbility);
+    res.send(avenger);
 });
 
 
@@ -231,7 +227,8 @@ function ensureToken(req, res, next) {
     if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(" ");
         const bearerToken = bearer[1];
-        if(bearerToken !== 'guitar' || bearerToken !== 'concertina'){
+        //TODO this
+        if(bearerToken !== 'guitar'){
             console.log("sending 403");
             res.sendStatus(403);
             return;
