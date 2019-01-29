@@ -152,7 +152,7 @@ app.post('/addability', ensureToken, function(req, res) {
     var newAbility = req.body.newAbility;
 
     var avenger = findUser(username);
-
+    //TODO this doens't work like this
     avenger.abilities.append(newAbility);
 
     //console.log(avenger);
@@ -201,7 +201,7 @@ app.post('/login', (req, resp) => {
         });
     }
     else if (checkLoginCredidentials(req.body.username.trim(), req.body.password.trim())){
-        const token = req.body.username;
+        const token = 'guitar';
         var user = findUser(req.body.username)
         //console.log(user);
         resp.json({
@@ -222,14 +222,16 @@ app.post('/login', (req, resp) => {
 
 
 function ensureToken(req, res, next) {
+    //console.log(req.headers.access_token);
     if(req.headers.access_token == 'concertina'){
+        console.log("verified access torken concertina");
         next();
     };
     const bearerHeader = req.headers["authorization"];
     if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(" ");
         const bearerToken = bearer[1];
-        if(bearerToken !== 'concertina'){
+        if(bearerToken !== 'guitar'){
             console.log("sending 403");
             res.sendStatus(403);
             return;

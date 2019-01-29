@@ -130,24 +130,27 @@ $(function () {
         if(token == null){
             console.log("NO TOKEN");
         };
-
+        console.log(token);
         event.preventDefault();
+
         console.log("Create avenger form ajax hit");
         var usernameInput = $('#id-label').val();
         var newAbility = $('#ability-input').val();
+
         var data = {
             "userID": usernameInput,
             "newAbility": newAbility
         }
-        console.log("Triggered add Ability");
 
         $.ajax({
             url: '/addability',
             method: 'POST',
             contentType: 'application/json',
+            beforeSend: (xhr) => {
+                xhr.setRequestHeader('Authorization', "bearer " + token)
+            },
             data: JSON.stringify(data),
             success: function(response) {
-                console.log("hellO!");
                 console.log(response);
 
                 $('#get-button').click();
