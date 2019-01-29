@@ -114,6 +114,11 @@ app.post('/missions', function(req, res) {
     res.send('Successfully created mission!');
 });
 
+app.get('/addability', function(req, resp){
+    console.log("going to get request not post");
+    return;
+});
+
 
 app.post('/people', ensureToken, function(req, res) {
     console.log("Adding an Avenger");
@@ -150,7 +155,7 @@ app.post('/addability', ensureToken, function(req, res) {
 
     avenger.abilities.append(newAbility);
 
-    console.log(avenger);
+    //console.log(avenger);
 
     res.send('Successfully updated Avenger!');
 });
@@ -164,7 +169,7 @@ app.get('/thanos', function(req, res) {
 
 
 app.get('/people', function(req, resp){
-    console.log("Returning people");
+    //console.log("Returning people");
     resp.send({people: people});
 });
 
@@ -184,15 +189,9 @@ app.get('/people/:username', function(req, resp) {
     resp.send(response);
 });
 
-app.get('/api', function api(req, res) {
-    res.json({
-        description: 'My API. Please authenticate!'
-    });
-});
-
 app.post('/login', (req, resp) => {
-    console.log("checking login credentials");
-    console.log(req);
+    //console.log("checking login credentials");
+    //console.log(req);
     if(req.body.username.trim() === admin.username && req.body.password.trim() == admin.password)
     {
         const token = "concertina"
@@ -204,7 +203,7 @@ app.post('/login', (req, resp) => {
     else if (checkLoginCredidentials(req.body.username.trim(), req.body.password.trim())){
         const token = req.body.username;
         var user = findUser(req.body.username)
-        console.log(user);
+        //console.log(user);
         resp.json({
            message: "User Authenticated! Token Attatched",
            token: token,
@@ -245,7 +244,7 @@ function ensureToken(req, res, next) {
 
 
 app.delete('/people/:username', function(req, res) {
-    console.log("Deleting value in server")
+    //console.log("Deleting value in server")
     var id = req.params.username;
 
     var found = false;
