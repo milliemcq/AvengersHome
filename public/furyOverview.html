@@ -144,7 +144,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="update-mission-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="assign-hero-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header" style="height: 50px">
@@ -154,19 +155,9 @@
                     </span>
             </div>
             <div class="modal-body">
-                <form id="udpate-mission-form">
-                    <label for="username-input">Username</label>
-                    <input type="text" class="form-control" size="15" maxlength="30" placeholder="Username"/>
-                    <br/>
-                    <label for="forename-input">Forename</label>
-                    <input type="text" class="form-control" id="forename-update-input" size="15" maxlength="30" placeholder="Forename"/>
-                    <br/>
-                    <label for="surname-input">Surname</label>
-                    <input type="text" class="form-control" id="surname-update-input" size="15" maxlength="30" placeholder="Surname"/>
-                    <br/>
-                    <label for="alter-ego-input">Alter Ego</label>
-                    <input type="text" class="form-control" id="alter-ego-update-input" size="15" maxlength="30" placeholder="Alter Ego"/>
-                    <br/>
+                <form id="add-avenger-form">
+                    <select id="avenger-dropdown" name="avenger-dropdown-locale">
+                    </select>
 
                     <button class="btn btn-dark" style="float: right">Update Mission</button>
                 </form>

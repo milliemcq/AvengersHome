@@ -7,7 +7,6 @@ $('table').on('click', 'update-button', function() {
         url: '/people/' + id,
         method: 'GET',
         contentType: 'application/json',
-        //data: JSON.stringify({ newName: newName }),
         success: function(response) {
             console.log(response);
             $('#get-button').click();
@@ -17,9 +16,6 @@ $('table').on('click', 'update-button', function() {
 
 $(function () {
     $("#get-button").on('click', function() {
-        console.log("Get button clicked!!!!!")
-
-
         $.ajax({
             url: '/missions',
             contentType: 'application/json',
@@ -37,6 +33,9 @@ $(function () {
                     <td>' + mission.heroesAssigned + '</td>\
                     <td>\
                     <button class="delete-button">x</button>\
+                    <button type="button" class="btn btn-link">\
+                     <a id="add-button" href="#" data-toggle="modal" data-target="#assign-hero-modal">Assign Heroes</a>\
+                     </button>\
                     </td>\
                     </tr>\
                 ');
@@ -119,13 +118,29 @@ $(function () {
 
 
     $('#mission-table').on('click', '.delete-button', function () {
-        console.log("close button clicked");
+        console.log("Delete button clicked");
         var rowEl = $(this).closest('tr');
         var id = rowEl.find('.id').text();
 
         $.ajax({
             url: '/missions/' + id,
             method: 'DELETE',
+            contentType: 'application/json',
+            success: function (response) {
+                console.log(response);
+                $('#get-button').click();
+            }
+        });
+    });
+
+    $('#mission-table').on('click', '.assign-heroes-button', function () {
+        console.log("Assign heroes button clicked");
+        var rowEl = $(this).closest('tr');
+        var id = rowEl.find('.id').text();
+
+        $.ajax({
+            url: '/assignHeroes',
+            method: 'POST',
             contentType: 'application/json',
             success: function (response) {
                 console.log(response);
