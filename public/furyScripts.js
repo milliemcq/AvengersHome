@@ -15,7 +15,8 @@ $('table').on('click', 'update-button', function() {
 });
 
 $(function () {
-    $("#get-button").on('click', function() {
+    $("#get-button").on('click', function () {
+
         $.ajax({
             url: '/missions',
             contentType: 'application/json',
@@ -51,70 +52,131 @@ $(function () {
             success: function (response) {
                 var tbodyEl = $('#people-table-body');
                 tbodyEl.html('');
+                var avengerDropdown = document.getElementById("avenger-dropdown");
                 response.people.forEach(function (people) {
+
                     tbodyEl.append('\
-                <tr>\
-                    <td class="id">' + people.username + '</td>\
-                    <td>' + people.forename + '</td>\
-                    <td>' + people.surname + '</td>\
-                    <td>' + people.alterEgo + '</td>\
-                    <td>' + people.abilities + '</td>\
-                    <td>\
-                    <button class="delete-button">x</button>\
-                    </td>\
-                    </tr>\
-                ');
+                        <tr>\
+                        <td class="id">' + people.username + '</td>\
+                        <td>' + people.forename + '</td>\
+                        <td>' + people.surname + '</td>\
+                        <td>' + people.alterEgo + '</td>\
+                        <td>' + people.abilities + '</td>\
+                        <td>\
+                        <button class="delete-button">x</button>\
+                        </td>\
+                        </tr>\
+                     ');
+
                 });
-                console.log('FINSIHED MISSIONS');
+
+                let dropdown = $('#avenger-dropdown');
+
+                dropdown.empty();
+
+                dropdown.append('<option selected="true" disabled>Choose Avenger</option>');
+                dropdown.prop('selectedIndex', 0);
+
+
+                $.each(response.people, function (key, entry) {
+                    console.log("Adding Avenger to Dropdown")
+                    dropdown.append($('<option></option>').attr('value', entry.username).text(entry.forename));
+                })
             }
-
-        })
-    });
-
-
-        $('#create-avenger-form').on('submit', function(event) {
-            const token = localStorage.getItem("token");
-            if(token == null){
-                console.log("NO TOKEN");
-            };
-
-            event.preventDefault();
-            console.log("Create avenger form ajax hit");
-            var usernameInput = $('#username-input').val();
-            var forenameInput = $('#forename-input').val();
-            var surnameInput = $('#surname-input').val();
-            var alterEgoInput = $('#alter-ego-input').val();
-            var abilities = $('#abilities-input').val();
-
-            var data = {
-                "username": usernameInput,
-                "forename": forenameInput,
-                "surname": surnameInput,
-                "alterEgo": alterEgoInput,
-                "abilities": abilities
-            };
-
-            console.log(data);
-            $.ajax({
-                url: '/people',
-                method: 'POST',
-                contentType: 'application/json',
-                beforeSend: (xhr) => {
-                    xhr.setRequestHeader('Authorization', "bearer " + token)
-                },
-                data: JSON.stringify(data),
-                success: function(response) {
-                    console.log("create avenger form");
-                    console.log(response);
-                    $('#get-button').click();
-                    $('#avenger-form-close-button').click();
-                },
-                error: function(){
-                    $('#validation-label').text("Username already in use");
-                }
-            });
         });
 
+
+    });
+})
+
+
+    $('#create-avenger-form').on('submit', function (event) {
+        const token = localStorage.getItem("token");
+        if (token == null) {
+            console.log("NO TOKEN");
+        }
+        ;
+
+        event.preventDefault();
+        console.log("Create avenger form ajax hit");
+        var usernameInput = $('#username-input').val();
+        var forenameInput = $('#forename-input').val();
+        var surnameInput = $('#surname-input').val();
+        var alterEgoInput = $('#alter-ego-input').val();
+        var abilities = $('#abilities-input').val();
+
+        var data = {
+            "username": usernameInput,
+            "forename": forenameInput,
+            "surname": surnameInput,
+            "alterEgo": alterEgoInput,
+            "abilities": abilities
+        };
+
+        console.log(data);
+        $.ajax({
+            url: '/people',
+            method: 'POST',
+            contentType: 'application/json',
+            beforeSend: (xhr) => {
+                xhr.setRequestHeader('Authorization', "bearer " + token)
+            },
+            data: JSON.stringify(data),
+            success: function (response) {
+                console.log("create avenger form");
+                console.log(response);
+                $('#get-button').click();
+                $('#avenger-form-close-button').click();
+            },
+            error: function () {
+                $('#validation-label').text("Username already in use");
+            }
+        });
+    });
+
+$('#add-avenger-form').on('submit', function (event) {
+    const token = localStorage.getItem("token");
+    if (token == null) {
+        console.log("NO TOKEN");
+    }
+    ;
+
+    event.preventDefault();
+    console.log("Create avenger form ajax hit");
+    var usernameInput = $('#username-input').val();
+    var forenameInput = $('#forename-input').val();
+    var surnameInput = $('#surname-input').val();
+    var alterEgoInput = $('#alter-ego-input').val();
+    var abilities = $('#abilities-input').val();
+
+    var data = {
+        "username": usernameInput,
+        "forename": forenameInput,
+        "surname": surnameInput,
+        "alterEgo": alterEgoInput,
+        "abilities": abilities
+    };
+
+    console.log(data);
+    $.ajax({
+        url: '/people',
+        method: 'POST',
+        contentType: 'application/json',
+        beforeSend: (xhr) => {
+            xhr.setRequestHeader('Authorization', "bearer " + token)
+        },
+        data: JSON.stringify(data),
+        success: function (response) {
+            console.log("create avenger form");
+            console.log(response);
+            $('#get-button').click();
+            $('#avenger-form-close-button').click();
+        },
+        error: function () {
+            $('#validation-label').text("Username already in use");
+        }
+    });
+});
 
 
     $('#mission-table').on('click', '.delete-button', function () {
@@ -150,9 +212,7 @@ $(function () {
     });
 
 
-
-
-    $('#people-table').on('click', '.delete-button',  function () {
+    $('#people-table').on('click', '.delete-button', function () {
         console.log("close button clicked");
         var rowEl = $(this).closest('tr');
         var id = rowEl.find('.id').text();
@@ -167,5 +227,6 @@ $(function () {
             }
         });
     });
-});
+
+
 
