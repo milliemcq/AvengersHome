@@ -146,9 +146,10 @@ app.post('/people', ensureToken, function(req, res) {
 app.post('/assignAvenger', ensureToken, function(req, res) {
     console.log("Updating assigning avenger List");
     var username = req.body.selectedAvengerUsername;
-    var missionID = Integer.parseInt(jsonObj.get(req.body.missionID));
-
-    var mission = findMission()
+    var missionID = req.body.missionID;
+    console.log(missionID);
+    var mission = findMission(missionID);
+    console.log(mission);
     mission.heroesAssigned.push(username);
     res.send(mission);
 });
@@ -157,7 +158,6 @@ app.post('/assignAvenger', ensureToken, function(req, res) {
 app.post('/addability', ensureToken, function(req, res) {
     console.log("Updating Ability List");
     var username = req.body.userID;
-    //console.log(req.body.userID);
     var newAbility = req.body.newAbility;
     var avenger = findUser(username);
     avenger.abilities.push(newAbility);
@@ -242,22 +242,20 @@ function ensureToken(req, res, next) {
         next();
     };
     const bearerHeader = req.headers["authorization"];
+
     if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(" ");
         const bearerToken = bearer[1];
-
-        var found = true;
-
-        if(bearerToken !== 'concertina'){
-            console.log("making found false - concertina");
-            found = false;
+        console.log(bearerToken);
+        if(bearerToken === 'concertina'){
+            console.log("found token concertina");
+            next();
         }
-        else if(bearerToken !== 'guitar'){
-            console.log("making found false - guitar");
-            found = false;
+        else if(bearerToken === 'guitar'){
+            console.log("found token guitar");
+            next();
         }
-
-        if(found){
+        else{
             console.log("sending 403");
             res.sendStatus(403);
             return;

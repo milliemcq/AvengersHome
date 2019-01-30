@@ -143,7 +143,7 @@ $(function () {
 
         event.preventDefault();
         console.log("Assign avenger form ajax hit");
-        var missionID = $('#assign-avenger-mission-id').text();
+        var missionID = Number($('#assign-avenger-mission-id').text());
         var e = document.getElementById("avenger-dropdown");
         var selectedAvenger = e.options[e.selectedIndex].value;
         console.log(selectedAvenger);
@@ -153,6 +153,7 @@ $(function () {
         };
 
         console.log(data);
+        console.log(token);
         $.ajax({
             url: '/assignAvenger',
             method: 'POST',
