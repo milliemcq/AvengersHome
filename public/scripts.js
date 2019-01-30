@@ -55,8 +55,6 @@ $(document).ready(function () {
     $('#login-modal').modal({ show: false})
 
 
-
-
 });
 
 function startCounting()

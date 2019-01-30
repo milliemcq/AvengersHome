@@ -154,6 +154,10 @@ li {
     color: silver !important;
 }
 
+#assign-button {
+    color: silver !important;
+}
+
 #title-welcome {
     color: silver;
     font-size: 80px;

@@ -33,10 +33,10 @@ $(function () {
                     <td>' + mission.atRiskCount + '</td>\
                     <td>' + mission.heroesAssigned + '</td>\
                     <td>\
-                    <button class="delete-button">x</button>\
                     <button type="button" class="btn btn-link">\
-                     <a class="assign-heroes-button" href="#" data-toggle="modal" data-target="#assign-hero-modal">Assign Heroes</a>\
-                     </button>\
+                        <a id="assign-button" class="assign-heroes-button" href="#" data-toggle="modal" data-target="#assign-hero-modal">Assign Hero</a>\
+                    </button>\
+                    <button class="delete-button">x</button>\
                     </td>\
                     </tr>\
                 ');

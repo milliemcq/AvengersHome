@@ -147,9 +147,7 @@ app.post('/assignAvenger', ensureToken, function(req, res) {
     console.log("Updating assigning avenger List");
     var username = req.body.selectedAvengerUsername;
     var missionID = req.body.missionID;
-    console.log(missionID);
     var mission = findMission(missionID);
-    console.log(mission);
     mission.heroesAssigned.push(username);
     res.send(mission);
 });
