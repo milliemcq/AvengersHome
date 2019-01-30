@@ -76,24 +76,18 @@ function startCounting()
 
 
 $(function () {
-    // GET HOMEPAGE
-
-    $("#thanos-button").on('click', function() {
+     $("#thanos-button").on('click', function() {
         $.ajax({
             url: '/thanos',
             method: 'GET',
             contentType: 'application/json',
-            //data: JSON.stringify(data),
             success: function(response) {
                 console.log(response);
             }
         });
     });
 
-    //GET FURY OVERVIEW
 
-    //CREATE/POST
-    // CREATE/POST
     $('#create-form').on('submit', function(event) {
         event.preventDefault();
 
@@ -299,15 +293,7 @@ $(function () {
 
 });
 
-function toggle_visibility(id) {
-    console.log("changing visability")
-    var e = document.getElementById(id);
-    if (e.style.display == 'block')
-        e.style.display = 'none';
-    else
-        e.style.display = 'block';
-        console.log("should show");
-}
+
 
 
 
