@@ -140,19 +140,17 @@ app.post('/people', ensureToken, function(req, res) {
         "alterEgo": req.body.alterEgo,
         "abilities": req.body.abilities
     });
-    //console.log(people);
-
     res.send('Successfully created Avenger!');
 });
 
 app.post('/assignAvenger', ensureToken, function(req, res) {
-    console.log("Updating Ability List");
-    var username = req.body.userID;
-    //console.log(req.body.userID);
-    var newAbility = req.body.newAbility;
-    var avenger = findUser(username);
-    avenger.abilities.push(newAbility);
-    res.send(avenger);
+    console.log("Updating assigning avenger List");
+    var username = req.body.selectedAvengerUsername;
+    var missionID = Integer.parseInt(jsonObj.get(req.body.missionID));
+
+    var mission = findMission()
+    mission.heroesAssigned.push(username);
+    res.send(mission);
 });
 
 
@@ -187,6 +185,16 @@ var findUser = function (username) {
         }
     }
     return "No User with that name found";
+};
+
+var findMission = function (missionID) {
+
+    for(var i = 0; i < missions.length; i++){
+        if (missions[i].id == missionID){
+            return missions[i];
+        }
+    }
+    return "No mission with that ID found";
 };
 
 app.get('/people/:username', function(req, resp) {
@@ -228,7 +236,7 @@ app.post('/login', (req, resp) => {
 
 
 function ensureToken(req, res, next) {
-    //console.log(req.headers.access_token);
+    console.log(req.headers.access_token);
     if(req.headers.access_token == 'concertina'){
         console.log("verified access torken concertina");
         next();
@@ -237,8 +245,19 @@ function ensureToken(req, res, next) {
     if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(" ");
         const bearerToken = bearer[1];
-        //TODO this
-        if(bearerToken !== 'guitar'){
+
+        var found = true;
+
+        if(bearerToken !== 'concertina'){
+            console.log("making found false - concertina");
+            found = false;
+        }
+        else if(bearerToken !== 'guitar'){
+            console.log("making found false - guitar");
+            found = false;
+        }
+
+        if(found){
             console.log("sending 403");
             res.sendStatus(403);
             return;
