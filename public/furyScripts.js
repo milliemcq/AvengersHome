@@ -35,7 +35,7 @@ $(function () {
                     <td>\
                     <button class="delete-button">x</button>\
                     <button type="button" class="btn btn-link">\
-                     <a id="add-button" href="#" data-toggle="modal" data-target="#assign-hero-modal">Assign Heroes</a>\
+                     <a class="assign-heroes-button" href="#" data-toggle="modal" data-target="#assign-hero-modal">Assign Heroes</a>\
                      </button>\
                     </td>\
                     </tr>\
@@ -81,12 +81,14 @@ $(function () {
                 $.each(response.people, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.username).text(entry.forename));
                 })
+
+
             }
         });
 
 
     });
-});
+
 
 
 $('#create-avenger-form').on('submit', function (event) {
@@ -137,12 +139,13 @@ $('#assign-avenger-form').on('submit', function (event) {
 
     event.preventDefault();
     console.log("Assign avenger form ajax hit");
-
+    var missionID = $('#assign-avenger-mission-id').text();
     var e = document.getElementById("avenger-dropdown");
     var selectedAvenger = e.options[e.selectedIndex].text;
     console.log(selectedAvenger)
     var data = {
-        "selectedAvenger": selectedAvenger
+        "selectedAvenger": selectedAvenger,
+        "missionID": missionID
     };
 
     console.log(data);
@@ -152,10 +155,10 @@ $('#assign-avenger-form').on('submit', function (event) {
         contentType: 'application/json',
         data: JSON.stringify(data),
         success: function (response) {
-            console.log("create avenger form");
-            console.log(response);
+            console.log("Added Avenger to Mission");
+            //console.log(response);
             $('#get-button').click();
-            $('#avenger-form-close-button').click();
+            $('#assign-hero-modal').click();
         },
         error: function () {
             $('#validation-label').text("Username already in use");
@@ -184,16 +187,8 @@ $('#assign-avenger-form').on('submit', function (event) {
         console.log("Assign heroes button clicked");
         var rowEl = $(this).closest('tr');
         var id = rowEl.find('.id').text();
+        $('#assign-avenger-mission-id').text(id);
 
-        $.ajax({
-            url: '/assignHeroes',
-            method: 'POST',
-            contentType: 'application/json',
-            success: function (response) {
-                console.log(response);
-                $('#get-button').click();
-            }
-        });
     });
 
 
@@ -212,6 +207,7 @@ $('#assign-avenger-form').on('submit', function (event) {
             }
         });
     });
+});
 
 
 

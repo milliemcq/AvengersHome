@@ -145,6 +145,16 @@ app.post('/people', ensureToken, function(req, res) {
     res.send('Successfully created Avenger!');
 });
 
+app.post('/assignAvenger', ensureToken, function(req, res) {
+    console.log("Updating Ability List");
+    var username = req.body.userID;
+    //console.log(req.body.userID);
+    var newAbility = req.body.newAbility;
+    var avenger = findUser(username);
+    avenger.abilities.push(newAbility);
+    res.send(avenger);
+});
+
 
 app.post('/addability', ensureToken, function(req, res) {
     console.log("Updating Ability List");
