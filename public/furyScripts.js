@@ -79,7 +79,6 @@ $(function () {
 
 
                 $.each(response.people, function (key, entry) {
-                    console.log("Adding Avenger to Dropdown")
                     dropdown.append($('<option></option>').attr('value', entry.username).text(entry.forename));
                 })
             }
@@ -87,54 +86,10 @@ $(function () {
 
 
     });
-})
+});
 
 
-    $('#create-avenger-form').on('submit', function (event) {
-        const token = localStorage.getItem("token");
-        if (token == null) {
-            console.log("NO TOKEN");
-        }
-        ;
-
-        event.preventDefault();
-        console.log("Create avenger form ajax hit");
-        var usernameInput = $('#username-input').val();
-        var forenameInput = $('#forename-input').val();
-        var surnameInput = $('#surname-input').val();
-        var alterEgoInput = $('#alter-ego-input').val();
-        var abilities = $('#abilities-input').val();
-
-        var data = {
-            "username": usernameInput,
-            "forename": forenameInput,
-            "surname": surnameInput,
-            "alterEgo": alterEgoInput,
-            "abilities": abilities
-        };
-
-        console.log(data);
-        $.ajax({
-            url: '/people',
-            method: 'POST',
-            contentType: 'application/json',
-            beforeSend: (xhr) => {
-                xhr.setRequestHeader('Authorization', "bearer " + token)
-            },
-            data: JSON.stringify(data),
-            success: function (response) {
-                console.log("create avenger form");
-                console.log(response);
-                $('#get-button').click();
-                $('#avenger-form-close-button').click();
-            },
-            error: function () {
-                $('#validation-label').text("Username already in use");
-            }
-        });
-    });
-
-$('#add-avenger-form').on('submit', function (event) {
+$('#create-avenger-form').on('submit', function (event) {
     const token = localStorage.getItem("token");
     if (token == null) {
         console.log("NO TOKEN");
@@ -165,6 +120,36 @@ $('#add-avenger-form').on('submit', function (event) {
         beforeSend: (xhr) => {
             xhr.setRequestHeader('Authorization', "bearer " + token)
         },
+        data: JSON.stringify(data),
+        success: function (response) {
+            console.log("create avenger form");
+            console.log(response);
+            $('#get-button').click();
+            $('#avenger-form-close-button').click();
+        },
+        error: function () {
+            $('#validation-label').text("Username already in use");
+        }
+    });
+});
+
+$('#assign-avenger-form').on('submit', function (event) {
+
+    event.preventDefault();
+    console.log("Assign avenger form ajax hit");
+
+    var e = document.getElementById("avenger-dropdown");
+    var selectedAvenger = e.options[e.selectedIndex].text;
+    console.log(selectedAvenger)
+    var data = {
+        "selectedAvenger": selectedAvenger
+    };
+
+    console.log(data);
+    $.ajax({
+        url: '/people',
+        method: 'POST',
+        contentType: 'application/json',
         data: JSON.stringify(data),
         success: function (response) {
             console.log("create avenger form");
