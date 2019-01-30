@@ -280,12 +280,13 @@ $(function () {
             if(token == null){
                 console.log("open modal");
                 $('#login-modal').modal('show');
+                return;
             }
             else{
                 $('#login-nav-label').empty()
                 localStorage.clear();
                 $('#login-nav-label').text('Login');
-
+                location.reload();
             }
         }
     );
