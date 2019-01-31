@@ -179,9 +179,10 @@ $(function () {
                     localStorage.setItem("token", response.token);
                     if(response.token === "concertina") {
                         //TODO Change this so it works in the cloud
-                        window.location.href = "http://localhost:8090/furyOverview.html";
+                        window.location.href = "/furyOverview.html";
                         $('#login-nav-label').empty()
                         $('#login-nav-label').text('Logout');
+                        $('#login-form-close-button').click();
                     }
                     else{
                         var user = response.userjson;
@@ -238,6 +239,12 @@ $(function () {
 
     $('#about-button').on('click', function(e) {
         e.preventDefault();
+
+        $('.navbar-nav .active').removeClass('active');
+
+        var $parent = $(this).parent();
+        $parent.addClass('active');
+
         var url = this.href;
         $('#container').remove();
         $('#profile-content').hide();
@@ -261,12 +268,24 @@ $(function () {
 
     $('#profile-nav-button').on('click', function(e) {
         e.preventDefault();
+
+
+
         const token = localStorage.getItem("token");
         if(token == null){
             console.log("open modal");
+            console.log(token);
             alert("You must login to view this page");
         }
         else {
+
+            $('.navbar-nav .active').removeClass('active');
+
+            var $parent = $(this).parent();
+            $parent.addClass('active');
+
+
+            console.log(token);
             $('#container').hide();
             $('#profile-content').show();
             $('#profile-content').fadeIn('slow');
@@ -276,9 +295,18 @@ $(function () {
     $("#login-nav-label").on('click', function(e)
         {
             e.preventDefault();
+
+
+            $('.navbar-nav .active').removeClass('active');
+
+            var $parent = $(this).parent();
+            $parent.addClass('active');
+
+
             const token = localStorage.getItem("token");
             if(token == null){
                 console.log("open modal");
+
                 $('#login-modal').modal('show');
                 return;
             }

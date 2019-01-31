@@ -107,7 +107,8 @@ app.post('/missions', function(req, res) {
         "id": currentMissionId,
         "threat": req.body.threat,
         "location": req.body.location,
-        "atRiskCount": req.body.atRiskCount
+        "atRiskCount": req.body.atRiskCount,
+        "heroesAssigned": []
     });
     //console.log(missions);
 
@@ -122,25 +123,27 @@ app.get('/addability', function(req, resp){
 
 app.post('/people', ensureToken, function(req, res) {
     console.log("Adding an Avenger");
+    var bool = true;
     people.forEach(function(person, index) {
-        //console.log(req.body.username)
-        //console.log(person.username);
         if (person.username == req.body.username || person.username == req.headers.username) {
             res.sendStatus(400);
-            console.log("detected duplicate avenger")
+            console.log("detected duplicate avenger");
+            bool = false;
+
             return;
         }
         ;
     });
-
-    people.push({
-        "username": req.body.username,
-        "forename": req.body.forename,
-        "surname": req.body.surname,
-        "alterEgo": req.body.alterEgo,
-        "abilities": req.body.abilities
-    });
-    res.send('Successfully created Avenger!');
+    if(bool) {
+        people.push({
+            "username": req.body.username,
+            "forename": req.body.forename,
+            "surname": req.body.surname,
+            "alterEgo": req.body.alterEgo,
+            "abilities": req.body.abilities
+        });
+        res.send('Successfully created Avenger!');
+    }
 });
 
 app.post('/assignAvenger', ensureToken, function(req, res) {
@@ -148,6 +151,11 @@ app.post('/assignAvenger', ensureToken, function(req, res) {
     var username = req.body.selectedAvengerUsername;
     var missionID = req.body.missionID;
     var mission = findMission(missionID);
+
+    console.log(missionID);
+    console.log(mission);
+    console.log(missions);
+
     mission.heroesAssigned.push(username);
     res.send(mission);
 });
