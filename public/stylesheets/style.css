@@ -9,7 +9,18 @@ p {
   color:silver;
 }
 
-table thead th { color: white; font-size:10pt; }
+table thead th {
+    color: white;
+    font-size:10pt;
+    white-space: nowrap
+    }
+
+
+
+table {
+    width: 100%;
+
+}
 
 h1 {
     color: silver;
@@ -19,8 +30,9 @@ h1 {
     font-style: normal;
     font-variant: normal;
     font-weight: lighter;
-    line-height: 26px;
+    line-height: 60px;
     opacity: 1;
+
 }
 
 h2 {
@@ -82,7 +94,15 @@ li {
     grid-row-end: 2;
 }
 
-
+.item-1{
+    width:100%;
+}
+.item-2{
+    width:100%;
+}
+.item-3{
+    width:100%;
+}
 
 
 .nope {
@@ -175,4 +195,10 @@ li {
 
 .assign-heroes-button {
 
+}
+
+@media screen and (max-width: 800px) {
+    .removeColumn {
+        display:none;
+    }
 }

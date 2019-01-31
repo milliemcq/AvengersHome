@@ -276,7 +276,7 @@ function ensureToken(req, res, next) {
 
 
 app.delete('/people/:username', function(req, res) {
-    //console.log("Deleting value in server")
+
     var id = req.params.username;
 
     var found = false;
@@ -312,9 +312,6 @@ app.delete('/missions/:id', function(req, res) {
 });
 
 function checkLoginCredidentials(username, password){
-    console.log("trying login credentials against users");
-    console.log(username);
-    console.log(password)
     var found = false
     users.forEach(function(user, index){
         console.log(user);

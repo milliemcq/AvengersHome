@@ -11,9 +11,9 @@ $(document).ready(function () {
                     tbodyEl.append('\
                     <tr>\
                         <td>' + mission.threat +'</td>\
-                        <td>' + mission.location + '</td>\
+                        <td class="removeColumn">' + mission.location + '</td>\
                         <td>' + mission.atRiskCount +'</td>\
-                        <td>' + mission.heroesAssigned+ '</td>\
+                        <td class="removeColumn">' + mission.heroesAssigned+ '</td>\
                         </tr>\
                     ');
                 });

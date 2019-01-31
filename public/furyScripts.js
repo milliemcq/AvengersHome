@@ -29,9 +29,9 @@ $(function () {
                 <tr>\
                     <td class="id">' + mission.id + '</td>\
                     <td>' + mission.threat + '</td>\
-                    <td>' + mission.location + '</td>\
-                    <td>' + mission.atRiskCount + '</td>\
-                    <td>' + mission.heroesAssigned + '</td>\
+                    <td class="removeColumn">' + mission.location + '</td>\
+                    <td class="removeColumn">' + mission.atRiskCount + '</td>\
+                    <td class="removeColumn">' + mission.heroesAssigned + '</td>\
                     <td>\
                     <button type="button" class="btn btn-link">\
                         <a id="assign-button" class="assign-heroes-button" href="#" data-toggle="modal" data-target="#assign-hero-modal">Assign Hero</a>\
@@ -58,10 +58,10 @@ $(function () {
                     tbodyEl.append('\
                         <tr>\
                         <td class="id">' + people.username + '</td>\
-                        <td>' + people.forename + '</td>\
-                        <td>' + people.surname + '</td>\
+                        <td class="removeColumn">' + people.forename + '</td>\
+                        <td class="removeColumn">' + people.surname + '</td>\
                         <td>' + people.alterEgo + '</td>\
-                        <td>' + people.abilities + '</td>\
+                        <td class="removeColumn">' + people.abilities + '</td>\
                         <td>\
                         <button class="delete-button">x</button>\
                         </td>\
