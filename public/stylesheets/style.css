@@ -79,29 +79,11 @@ li {
 
 
 
-.grid-1 div {
-  color: silver;
-  font-size: 20px;
-  padding: 20px;
-}
-
-
-
 .box1 {
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
-}
-
-.item-1{
-    width:100%;
-}
-.item-2{
-    width:100%;
-}
-.item-3{
-    width:100%;
 }
 
 
